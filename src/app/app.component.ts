@@ -6,5 +6,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'thunderbank-spa';
+  title = "Titulo do Header (app.component)"
+
 }
