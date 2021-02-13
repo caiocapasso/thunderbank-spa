@@ -1,5 +1,11 @@
-<header class="header">
-  <h1>
-    Meu cabeçalho - {{title}}
-  </h1>
-  </header>
+<nav class="navbar navbar-expand navbar-dark bg-dark p-3">
+  <a class="navbar-brand"> Meu Bankline </a>
+  <div class="navbar-nav">
+    <a class="nav-item nav-link" routerLink="/home" routerLinkActive="active">Home</a>
+    <a class="nav-item nav-link" routerLink="/user-login" routerLinkActive="active">Entrar</a>
+    <a class="nav-item nav-link" routerLink="/user-register" routerLinkActive="active">Criar Conta</a>
+    <a class="nav-item nav-link" routerLink="/user-dashboard" routerLinkActive="active">Minha Conta</a>
+    <a class="nav-item nav-link" routerLink="/user-profile" routerLinkActive="active">Meu Perfil</a>
+    <button class="btn btn-outline-light" (click)="userLogout()">Sair</button>
+  </div>
+</nav>

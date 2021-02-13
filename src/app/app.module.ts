@@ -11,6 +11,7 @@ import { HeaderComponent } from './shared/components/header/header.component';
 import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
 import { UserLoginComponent } from './user-login/user-login.component';
 import { UserRegisterComponent } from './user-register/user-register.component';
+import { Error404Component } from './error404/error404.component';
 
 registerLocaleData(localePT, 'pt')
 
@@ -22,7 +23,8 @@ registerLocaleData(localePT, 'pt')
     FooterComponent,
     UserLoginComponent,
     UserRegisterComponent,
-    UserDashboardComponent
+    UserDashboardComponent,
+    Error404Component,
   ],
   imports: [
     BrowserModule,

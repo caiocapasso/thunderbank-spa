@@ -1,4 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -6,13 +7,11 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent {
-  @Input('title') title: string | undefined;
 
-  constructor(){
-    setTimeout(() => {
-      console.log('mudou o valor...')
-      this.title = "THUUUUUNDER - BAAAAAAAAANK! HooooOOOOOoooo"
-    }, 3000)
+  constructor(private router: Router ){}
+
+  userLogout(): void {
+    console.log('user logged out');
+    this.router.navigate(['home']);
   }
-
 }
