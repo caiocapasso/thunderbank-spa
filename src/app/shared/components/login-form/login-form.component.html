@@ -1,1 +1,34 @@
-<p>login-form works!</p>
+<form class="form-signin" #form="ngForm" (submit)="onSubmit(form)">
+  <div class="form-group mt-3">
+    <input
+      type="text"
+      autocomplete="username"
+      class="form-control"
+      [class.is-invalid]="exibeErro('usuario', form)"
+      placeholder="Usuário"
+      [(ngModel)]="usuario"
+      name="usuario"
+      required
+    />
+    <div *ngIf="exibeErro('usuario', form)" class="invalid-feedback">
+      Usuário inválido
+    </div>
+  </div>
+  <div class="form-group mt-3">
+    <input
+      type="password"
+      autocomplete="current-password"
+      class="form-control"
+      [class.is-invalid]="exibeErro('senha', form)"
+      placeholder="Senha"
+      [(ngModel)]="senha"
+      name="senha"
+      required
+    />
+    <div *ngIf="exibeErro('senha', form)" class="invalid-feedback">
+      Senha inválida
+    </div>
+  </div>
+
+  <button type="submit" class="btn btn-primary mt-3">Entrar</button>
+</form>

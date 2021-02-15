@@ -18,6 +18,7 @@ import { UserLoginComponent } from "./user-login/user-login.component";
 import { UserRegisterComponent } from "./user-register/user-register.component";
 import { LoginFormComponent } from "./shared/components/login-form/login-form.component";
 import { UserProfileComponent } from "./auth-area/user-dashboard/user-profile/user-profile.component";
+import { SpinningLoaderComponent } from "./shared/components/spinning-loader/spinning-loader.component";
 
 registerLocaleData(localePT, "pt");
 
@@ -36,7 +37,8 @@ registerLocaleData(localePT, "pt");
 		UserRegisterComponent,
 		UserAccountPlanComponent,
 		LoginFormComponent,
-		UserProfileComponent
+		UserProfileComponent,
+		SpinningLoaderComponent
 	],
 	imports: [BrowserModule, AppRoutingModule, FormsModule],
 	providers: [
