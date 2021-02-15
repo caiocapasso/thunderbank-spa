@@ -1,25 +1,24 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { UserPaymentComponent } from './user-payment.component';
+import { UserPaymentComponent } from "./user-payment.component";
 
-describe('UserPaymentComponent', () => {
-  let component: UserPaymentComponent;
-  let fixture: ComponentFixture<UserPaymentComponent>;
+describe("UserPaymentComponent", () => {
+	let component: UserPaymentComponent;
+	let fixture: ComponentFixture<UserPaymentComponent>;
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [ UserPaymentComponent ]
-    })
-    .compileComponents();
-  });
+	beforeEach(async () => {
+		await TestBed.configureTestingModule({
+			declarations: [UserPaymentComponent]
+		}).compileComponents();
+	});
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(UserPaymentComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+	beforeEach(() => {
+		fixture = TestBed.createComponent(UserPaymentComponent);
+		component = fixture.componentInstance;
+		fixture.detectChanges();
+	});
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
+	it("should create", () => {
+		expect(component).toBeTruthy();
+	});
 });

@@ -1,15 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from "@angular/core";
 
 @Component({
-  selector: 'app-recover-form',
-  templateUrl: './recover-form.component.html',
-  styleUrls: ['./recover-form.component.scss']
+	selector: "app-recover-form",
+	templateUrl: "./recover-form.component.html",
+	styleUrls: ["./recover-form.component.scss"]
 })
 export class RecoverFormComponent implements OnInit {
+	constructor() {}
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+	ngOnInit(): void {}
 }
