@@ -1,17 +1,17 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
 
-import { AuthAreaComponent } from "./auth-area/auth-area.component";
-import { UserAccountPlanComponent } from "./auth-area/user-dashboard/user-account-plan/user-account-plan.component";
-import { UserDashboardComponent } from "./auth-area/user-dashboard/user-dashboard.component";
-import { UserDepositComponent } from "./auth-area/user-dashboard/user-deposit/user-deposit.component";
-import { UserPaymentComponent } from "./auth-area/user-dashboard/user-payment/user-payment.component";
-import { UserProfileComponent } from "./auth-area/user-dashboard/user-profile/user-profile.component";
-import { UserTransferComponent } from "./auth-area/user-dashboard/user-transfer/user-transfer.component";
-import { Error404Component } from "./error404/error404.component";
-import { HomeComponent } from "./home/home.component";
-import { UserLoginComponent } from "./user-login/user-login.component";
-import { UserRegisterComponent } from "./user-register/user-register.component";
+import { AuthAreaComponent } from "./pages/auth-area/auth-area.component";
+import { AccountPlanComponent } from "./pages/auth-area/dashboard/account-plan/account-plan.component";
+import { DashboardComponent } from "./pages/auth-area/dashboard/dashboard.component";
+import { DepositComponent } from "./pages/auth-area/dashboard/deposit/deposit.component";
+import { PaymentComponent } from "./pages/auth-area/dashboard/payment/payment.component";
+import { ProfileComponent } from "./pages/auth-area/dashboard/profile/profile.component";
+import { TransferComponent } from "./pages/auth-area/dashboard/transfer/transfer.component";
+import { Error404Component } from "./pages/error404/error404.component";
+import { HomeComponent } from "./pages/home/home.component";
+import { LoginComponent } from "./pages/login/login.component";
+import { RegisterComponent } from "./pages/register/register.component";
 
 const routes: Routes = [
 	{
@@ -19,34 +19,34 @@ const routes: Routes = [
 		component: AuthAreaComponent,
 		children: [
 			{
-				path: "user-dashboard",
-				component: UserDashboardComponent,
+				path: "dashboard",
+				component: DashboardComponent,
 				children: [
 					{
-						path: "user-account-plan",
-						component: UserAccountPlanComponent
+						path: "account-plan",
+						component: AccountPlanComponent
 					},
 					{
-						path: "user-deposit",
-						component: UserDepositComponent
+						path: "deposit",
+						component: DepositComponent
 					},
 					{
-						path: "user-payment",
-						component: UserPaymentComponent
+						path: "payment",
+						component: PaymentComponent
 					},
 					{
-						path: "user-profile",
-						component: UserProfileComponent
+						path: "profile",
+						component: ProfileComponent
 					},
 					{
-						path: "user-transfer",
-						component: UserTransferComponent
+						path: "transfer",
+						component: TransferComponent
 					}
 				]
 			},
 			{
 				path: "",
-				redirectTo: "user-dashboard",
+				redirectTo: "dashboard",
 				pathMatch: "full"
 			}
 		]
@@ -56,12 +56,12 @@ const routes: Routes = [
 		component: HomeComponent
 	},
 	{
-		path: "user-register",
-		component: UserRegisterComponent
+		path: "register",
+		component: RegisterComponent
 	},
 	{
-		path: "user-login",
-		component: UserLoginComponent
+		path: "login",
+		component: LoginComponent
 	},
 	{
 		path: "",

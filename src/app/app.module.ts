@@ -6,19 +6,20 @@ import { BrowserModule } from "@angular/platform-browser";
 
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
-import { AuthAreaComponent } from "./auth-area/auth-area.component";
-import { UserAccountPlanComponent } from "./auth-area/user-dashboard/user-account-plan/user-account-plan.component";
-import { UserDashboardComponent } from "./auth-area/user-dashboard/user-dashboard.component";
-import { UserPaymentComponent } from "./auth-area/user-dashboard/user-payment/user-payment.component";
-import { Error404Component } from "./error404/error404.component";
-import { HomeComponent } from "./home/home.component";
+import { AuthAreaComponent } from "./pages/auth-area/auth-area.component";
+import { AccountPlanComponent } from "./pages/auth-area/dashboard/account-plan/account-plan.component";
+import { DashboardComponent } from "./pages/auth-area/dashboard/dashboard.component";
+import { PaymentComponent } from "./pages/auth-area/dashboard/payment/payment.component";
+import { Error404Component } from "./pages/error404/error404.component";
+import { HomeComponent } from "./pages/home/home.component";
 import { FooterComponent } from "./shared/components/footer/footer.component";
 import { HeaderComponent } from "./shared/components/header/header.component";
-import { UserLoginComponent } from "./user-login/user-login.component";
-import { UserRegisterComponent } from "./user-register/user-register.component";
+import { LoginComponent } from "./pages/login/login.component";
+import { RegisterComponent } from "./pages/register/register.component";
 import { LoginFormComponent } from "./shared/components/login-form/login-form.component";
-import { UserProfileComponent } from "./auth-area/user-dashboard/user-profile/user-profile.component";
+import { ProfileComponent } from "./pages/auth-area/dashboard/profile/profile.component";
 import { SpinningLoaderComponent } from "./shared/components/spinning-loader/spinning-loader.component";
+import { RecoverComponent } from "./pages/recover/recover.component";
 
 registerLocaleData(localePT, "pt");
 
@@ -28,17 +29,18 @@ registerLocaleData(localePT, "pt");
 		HeaderComponent,
 		HomeComponent,
 		FooterComponent,
-		UserLoginComponent,
-		UserRegisterComponent,
-		UserDashboardComponent,
+		LoginComponent,
+		RegisterComponent,
+		DashboardComponent,
 		Error404Component,
 		AuthAreaComponent,
-		UserPaymentComponent,
-		UserRegisterComponent,
-		UserAccountPlanComponent,
+		PaymentComponent,
+		RegisterComponent,
+		AccountPlanComponent,
 		LoginFormComponent,
-		UserProfileComponent,
-		SpinningLoaderComponent
+		ProfileComponent,
+		SpinningLoaderComponent,
+		RecoverComponent
 	],
 	imports: [BrowserModule, AppRoutingModule, FormsModule],
 	providers: [
