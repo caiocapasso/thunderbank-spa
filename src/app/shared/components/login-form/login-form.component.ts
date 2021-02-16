@@ -25,18 +25,9 @@ export class LoginFormComponent {
 
 		if (!form.valid) {
 			console.log("form is not valid");
-			form.controls.usuario.markAsTouched();
-			form.controls.senha.markAsTouched();
-			return;
-		}
-
-		if (form.controls.usuario.invalid) {
-			this.passInput?.nativeElement.focus();
-			return;
-		}
-
-		if (form.controls.senha.invalid) {
-			this.userInput?.nativeElement.focus();
+			Object.keys(form.controls).forEach((key) => {
+				form.controls[key].markAsTouched();
+			});
 			return;
 		}
 
