@@ -1,10 +1,23 @@
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
+import { Observable } from "rxjs";
+import { environment } from "src/environments/environment";
+import { AuthService } from "./auth.service";
 
 @Injectable({
 	providedIn: "root"
 })
 export class DashboardService {
-	constructor() {}
+	constructor(private http: HttpClient, private authService: AuthService) { }
+
+
+	obterSaldo(): Observable<any> {
+		let usuario = this.authService.getUser();
+
+		//const headers = new Headers({ "Content-Type": "application/json" });
+		const headers = new HttpHeaders({ "Content-Type": "application/json", "authorization": "Bearer " + this.authService.getToken() });
+		return this.http.get(`${environment.API_URL}conta/dashboard/${usuario.contas[0]}`, { headers: headers });
+	}
 }
 
 //FIXME: referência servico implementado no projeto anterior

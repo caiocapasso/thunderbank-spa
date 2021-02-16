@@ -1,10 +1,23 @@
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
+import { AuthService } from "./auth.service";
+import { environment } from "src/environments/environment";
+import { Observable } from "rxjs";
+
 
 @Injectable({
 	providedIn: "root"
 })
 export class LancamentoService {
-	constructor() {}
+	constructor(private http: HttpClient, private authService: AuthService) { }
+
+
+	obterLancamentos(): Observable<any> {
+		const usuario = this.authService.getUser();
+		const headers = new HttpHeaders({ "Content-Type": "application/json", "authorization": "Bearer " + this.authService.getToken() });
+		return this.http.get(`${environment.API_URL}lancamento/${usuario.contas[0]}`, { headers: headers });
+
+	};
 }
 
 //FIXME: referência servico implementado no projeto anterior
@@ -43,28 +56,3 @@ export class LancamentoService {
 //   }
 // };
 
-// const obterLancamentos = () => {
-//   if (token) {
-//     const headers = new Headers({ "Content-Type": "application/json" });
-//     headers.append("authorization", "Bearer " + token);
-
-//     const jwtDecode = tokenService.parseJwt(token);
-
-//     return fetch(url + "/" + jwtDecode.conta, {
-//       method: "GET",
-//       headers: headers,
-//     })
-//       .then((response) => {
-//         if (!response.ok) {
-//           throw Error(`Erro: ${response.status} - ${response.statusText}`);
-//         }
-//         return response;
-//       })
-//       .then((response) => {
-//         return response.json();
-//       })
-//       .catch((error) => {
-//         console.log(error);
-//       });
-//   }
-// };

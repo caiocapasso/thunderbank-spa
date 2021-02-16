@@ -1,16 +1,20 @@
-import { Injectable } from "@angular/core";
+import { Injectable, OnInit } from "@angular/core";
 import { Usuario } from "../models/usuario.model";
 
 @Injectable({
 	providedIn: "root"
 })
-export class AuthService {
-	usuario: Usuario | undefined;
+export class AuthService implements OnInit {
+	usuario: any;
 	token: string | undefined;
 
-	constructor() {}
+	constructor() { }
 
-	getUser(): Usuario | undefined {
+	ngOnInit() {
+
+	}
+
+	getUser(): Usuario {
 		if (this.usuario) {
 			return this.usuario;
 		}

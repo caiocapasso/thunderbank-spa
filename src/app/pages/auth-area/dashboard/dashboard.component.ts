@@ -10,6 +10,8 @@ import {
 	faHandHoldingUsd,
 	faCoins
 } from "@fortawesome/free-solid-svg-icons";
+import { DashboardService } from "src/app/shared/services/dashboard.service";
+import { LancamentoService } from "src/app/shared/services/lancamento.service";
 
 @Component({
 	selector: "app-dashboard",
@@ -25,11 +27,16 @@ export class DashboardComponent implements OnInit {
 	faHandHoldingUsd = faHandHoldingUsd;
 	faCoins = faCoins;
 
-	usuario: Usuario | undefined;
+	usuario: any;
+	dashBoard: any;
+	lancamentos: any;
 
-	constructor(private authService: AuthService) {}
+	constructor(private authService: AuthService, private dashBoardService: DashboardService, private lancamentoService: LancamentoService) { }
 
 	ngOnInit(): void {
 		this.usuario = this.authService.getUser();
+		this.dashBoardService.obterSaldo().subscribe(response => this.dashBoard = response);
+		this.lancamentoService.obterLancamentos().subscribe(response => this.lancamentos = response);
+		console.log(this.lancamentos);
 	}
 }

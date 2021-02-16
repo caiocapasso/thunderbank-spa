@@ -1,6 +1,6 @@
 // exemplo objeto decodificado:
 //jwt = {
-//conta: 1 //-> conta do usuario
+//contas: [1,2] //-> conta do usuario
 //exp: 1613334911
 //iat: 1613331311
 //iss: "bank line"
@@ -8,7 +8,7 @@
 //nome: "franklin" //-> nome do usuario
 //}
 
-const parseJwt = (token) => {
+const parseJwt = (token: string) => {
 	const base64Url = token.split(".")[1];
 	const base64 = base64Url.replace(/-/g, "+").replace(/_/g, "/");
 	const jsonPayload = decodeURIComponent(
@@ -26,19 +26,18 @@ const parseJwt = (token) => {
 const formatarDinheiro = (valor: number) => {
 	return valor
 		? valor.toLocaleString("pt-BR", {
-				minimumFractionDigits: 2,
-				style: "currency",
-				currency: "BRL"
-		  })
+			minimumFractionDigits: 2,
+			style: "currency",
+			currency: "BRL"
+		})
 		: "valor indisponível";
 };
 
 const formatarData = (valor: string): string => {
 	const tempDate = new Date(valor);
 	console.log(tempDate);
-	const bla = `${tempDate.getDate()}/${
-		tempDate.getMonth() + 1
-	}/${tempDate.getFullYear()}`;
+	const bla = `${tempDate.getDate()}/${tempDate.getMonth() + 1
+		}/${tempDate.getFullYear()}`;
 	console.log(bla);
 	return bla;
 };

@@ -19,10 +19,9 @@ export class LoginFormComponent {
 	@ViewChild("usuarioInput") userInput: ElementRef | undefined;
 	@ViewChild("senhaInput") passInput: ElementRef | undefined;
 
-	constructor(private loginService: LoginService, private router: Router) {}
+	constructor(private loginService: LoginService, private router: Router) { }
 
 	onSubmit(form: NgForm): void {
-		console.log("form was submmited", form);
 
 		if (!form.valid) {
 			console.log("form is not valid");
@@ -59,7 +58,7 @@ export class LoginFormComponent {
 		this.isLoading = true;
 
 		const userData = {
-			usuario: this.usuario,
+			login: this.usuario,
 			senha: this.senha
 		};
 

@@ -1,7 +1,7 @@
 import { Usuario } from "../../models/usuario.model";
 
 export interface Login {
-	usuario: string;
+	login: string;
 	senha: string;
 }
 
