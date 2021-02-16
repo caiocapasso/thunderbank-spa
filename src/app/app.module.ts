@@ -34,6 +34,7 @@ import { TransferFormComponent } from "./pages/auth-area/dashboard/transfer/tran
 import { TransferComponent } from "./pages/auth-area/dashboard/transfer/transfer.component";
 import { DepositComponent } from "./pages/auth-area/dashboard/deposit/deposit.component";
 import { SelectAccountPlanComponent } from './shared/components/select-account-plan/select-account-plan.component';
+import { SidebarComponent } from './shared/components/sidebar/sidebar.component';
 
 registerLocaleData(localePT, "pt");
 
@@ -64,7 +65,8 @@ registerLocaleData(localePT, "pt");
 		ProfileFormComponent,
 		TransferComponent,
 		TransferFormComponent,
-		SelectAccountPlanComponent
+		SelectAccountPlanComponent,
+		SidebarComponent
 	],
 	imports: [
 		BrowserModule,
