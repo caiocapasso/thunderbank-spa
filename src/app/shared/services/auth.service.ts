@@ -10,7 +10,7 @@ export class AuthService {
 
 	constructor() {}
 
-	getUsuario() {
+	getUser(): Usuario | undefined {
 		if (this.usuario) {
 			return this.usuario;
 		}
@@ -22,7 +22,7 @@ export class AuthService {
 		return this.usuario;
 	}
 
-	getToken() {
+	getToken(): string | undefined {
 		if (this.token) {
 			return this.token;
 		}
@@ -35,13 +35,24 @@ export class AuthService {
 		return this.token;
 	}
 
-	setUsuario(usuario: Usuario) {
+	setUser(usuario: Usuario): void {
 		this.usuario = usuario;
 		localStorage.setItem("usuario", JSON.stringify(usuario));
 	}
 
-	setToken(token: string) {
+	setToken(token: string): void {
 		this.token = token;
 		localStorage.setItem("token", token);
+	}
+
+	isLogged(): boolean {
+		return !!(this.getUser() && this.getToken());
+	}
+
+	logout(): void {
+		localStorage.removeItem("token");
+		localStorage.removeItem("usuario");
+		delete this.usuario;
+		delete this.token;
 	}
 }

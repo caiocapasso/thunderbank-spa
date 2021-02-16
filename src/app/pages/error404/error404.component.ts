@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { faExclamationTriangle } from "@fortawesome/free-solid-svg-icons";
 
 @Component({
 	selector: "app-error404",
@@ -6,6 +7,7 @@ import { Component, OnInit } from "@angular/core";
 	styleUrls: ["./error404.component.scss"]
 })
 export class Error404Component implements OnInit {
+	faExclamationTriangle = faExclamationTriangle;
 	constructor() {}
 
 	ngOnInit(): void {}

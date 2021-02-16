@@ -1,9 +1,8 @@
 import { HttpErrorResponse } from "@angular/common/http";
-import { Component, ElementRef, OnInit, ViewChild } from "@angular/core";
+import { Component, ElementRef, ViewChild } from "@angular/core";
 import { NgForm } from "@angular/forms";
 import { Router } from "@angular/router";
-import { AuthService } from "../../services/auth.service";
-import { LoginResponse } from "./login.model";
+import { finalize, take } from "rxjs/operators";
 import { LoginService } from "./login.service";
 
 @Component({
@@ -11,20 +10,16 @@ import { LoginService } from "./login.service";
 	templateUrl: "./login-form.component.html",
 	styleUrls: ["./login-form.component.scss"]
 })
-export class LoginFormComponent implements OnInit {
+export class LoginFormComponent {
 	usuario = "";
 	senha = "";
+	isLoading = false;
+	hasError = false;
 
-	@ViewChild("usuarioInput") usuarioInput: ElementRef | undefined;
-	@ViewChild("senhaInput") senhaInput: ElementRef | undefined;
+	@ViewChild("usuarioInput") userInput: ElementRef | undefined;
+	@ViewChild("senhaInput") passInput: ElementRef | undefined;
 
-	constructor(
-		private loginService: LoginService,
-		private authService: AuthService,
-		private router: Router
-	) {}
-
-	ngOnInit(): void {}
+	constructor(private loginService: LoginService, private router: Router) {}
 
 	onSubmit(form: NgForm): void {
 		console.log("form was submmited", form);
@@ -37,20 +32,19 @@ export class LoginFormComponent implements OnInit {
 		}
 
 		if (form.controls.usuario.invalid) {
-			this.senhaInput?.nativeElement.focus();
+			this.passInput?.nativeElement.focus();
 			return;
 		}
 
 		if (form.controls.senha.invalid) {
-			this.usuarioInput?.nativeElement.focus();
+			this.userInput?.nativeElement.focus();
 			return;
 		}
 
-		console.log("form is valid");
 		this.login();
 	}
 
-	exibeErro(inputName: string, form: NgForm): boolean {
+	validateInput(inputName: string, form: NgForm): boolean {
 		if (!form.controls[inputName]) {
 			return false;
 		}
@@ -61,24 +55,32 @@ export class LoginFormComponent implements OnInit {
 	}
 
 	login(): void {
-		console.log("login");
-		const credenciais = {
+		this.hasError = false;
+		this.isLoading = true;
+
+		const userData = {
 			usuario: this.usuario,
 			senha: this.senha
 		};
 
-		this.loginService.logar(credenciais).subscribe(
-			(response) => this.onSuccessLogin(response),
-			(error) => this.onErrorLogin(error)
-		);
+		this.loginService
+			.login(userData)
+			.pipe(
+				take(1),
+				finalize(() => (this.isLoading = false))
+			)
+			.subscribe(
+				() => this.onSuccessLogin(),
+				(error) => this.onErrorLogin(error)
+			);
 	}
 
-	onSuccessLogin(response: LoginResponse): void {
-		console.log("onSuccessLogin() -> ", response);
-		this.router.navigate(["dashboard"]);
+	onSuccessLogin(): void {
+		void this.router.navigate(["dashboard"]);
 	}
 
 	onErrorLogin(error: HttpErrorResponse): void {
+		this.hasError = true;
 		console.log("onErrorLogin ->  ", error);
 	}
 }

@@ -1,1 +1,24 @@
-<p>recover-form works!</p>
+<form class="card m-3 form-control text-dark">
+	<h2 class="m-4 text-center">
+		Não lembra sua senha? Informe seu e-mail para recuperar
+	</h2>
+	<div class="m-5">
+		<div class="mb-2 input-group-sm">
+			<label for="emailInput" class="form-label">e-mail</label>
+			<input type="email" class="form-control" id="emailInput" required />
+		</div>
+		<button
+			type="submit"
+			class="btn btn-warning btn-custom-width text-white"
+		>
+			Recuperar
+		</button>
+		<div class="mt-4">
+			<a routerLink="/login">Já tem uma conta? Entre por aqui</a>
+			<br />
+			<a routerLink="/register"
+				>Ainda não é cliente? Crie sua conta agora mesmo</a
+			>
+		</div>
+	</div>
+</form>

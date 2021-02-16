@@ -11,38 +11,40 @@ import { TransferComponent } from "./pages/auth-area/dashboard/transfer/transfer
 import { Error404Component } from "./pages/error404/error404.component";
 import { HomeComponent } from "./pages/home/home.component";
 import { LoginComponent } from "./pages/login/login.component";
+import { RecoverComponent } from "./pages/recover/recover.component";
 import { RegisterComponent } from "./pages/register/register.component";
+import { LoggedUserGuard } from "./shared/guards/logged-user.guard";
+import { UnloggedUserGuard } from "./shared/guards/unlogged-user.guard";
 
 const routes: Routes = [
 	{
 		path: "",
 		component: AuthAreaComponent,
+		canActivate: [LoggedUserGuard],
 		children: [
 			{
 				path: "dashboard",
-				component: DashboardComponent,
-				children: [
-					{
-						path: "account-plan",
-						component: AccountPlanComponent
-					},
-					{
-						path: "deposit",
-						component: DepositComponent
-					},
-					{
-						path: "payment",
-						component: PaymentComponent
-					},
-					{
-						path: "profile",
-						component: ProfileComponent
-					},
-					{
-						path: "transfer",
-						component: TransferComponent
-					}
-				]
+				component: DashboardComponent
+			},
+			{
+				path: "dashboard/account-plan",
+				component: AccountPlanComponent
+			},
+			{
+				path: "dashboard/deposit",
+				component: DepositComponent
+			},
+			{
+				path: "dashboard/payment",
+				component: PaymentComponent
+			},
+			{
+				path: "dashboard/profile",
+				component: ProfileComponent
+			},
+			{
+				path: "dashboard/transfer",
+				component: TransferComponent
 			},
 			{
 				path: "",
@@ -57,11 +59,18 @@ const routes: Routes = [
 	},
 	{
 		path: "register",
-		component: RegisterComponent
+		component: RegisterComponent,
+		canActivate: [UnloggedUserGuard]
 	},
 	{
 		path: "login",
-		component: LoginComponent
+		component: LoginComponent,
+		canActivate: [UnloggedUserGuard]
+	},
+	{
+		path: "recover",
+		component: RecoverComponent,
+		canActivate: [UnloggedUserGuard]
 	},
 	{
 		path: "",

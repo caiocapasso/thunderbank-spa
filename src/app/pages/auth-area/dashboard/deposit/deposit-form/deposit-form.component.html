@@ -1,0 +1,28 @@
+<form id="deposito-form">
+	<div class="col m-3">
+		<input
+			type="number"
+			name="valor"
+			class="form-control"
+			placeholder="Valor"
+			id="inputValor"
+		/>
+	</div>
+	<div class="col m-3">
+		<input
+			type="text"
+			name="name"
+			class="form-control"
+			placeholder="Descrição"
+			id="inputDescricao"
+		/>
+	</div>
+	<div class="col m-3">
+		<app-select-account-plan></app-select-account-plan>
+	</div>
+	<div class="col m-3 text-center">
+		<button type="submit" class="btn btn-labeled btn-success m-2 p-2">
+			Depositar
+		</button>
+	</div>
+</form>

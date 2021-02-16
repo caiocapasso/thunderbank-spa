@@ -1,0 +1,59 @@
+<form id="profile-form" class="form-control">
+	<div class="row">
+		<div class="col-md-6 mb-2 input-group-sm">
+			<label for="nomeInput" class="form-label">nome</label>
+			<input
+				type="text"
+				class="form-control"
+				id="nomeInput"
+				required
+				disabled
+			/>
+		</div>
+		<div class="col-md-6 mb-2 input-group-sm">
+			<label for="cpfInput" class="form-label">cpf</label>
+			<input
+				type="text"
+				class="form-control"
+				id="cpfInput"
+				required
+				disabled
+			/>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-6 mb-2 input-group-sm">
+			<label for="telInput" class="form-label">telefone</label>
+			<input
+				type="tel"
+				class="form-control"
+				id="telInput"
+				pattern="[0-9]{11}"
+				required
+			/>
+		</div>
+		<div class="col-md-6 mb-2 input-group-sm">
+			<label for="emailInput" class="form-label">e-mail</label>
+			<input type="email" class="form-control" id="emailInput" required />
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-6 mb-2 input-group-sm">
+			<label for="telInput" class="form-label">nova senha</label>
+			<input type="password" class="form-control" id="passInput" />
+		</div>
+		<div class="col-md-6 mb-2 input-group-sm">
+			<label for="emailInput" class="form-label"
+				>confirmar nova senha</label
+			>
+			<input type="password" class="form-control" id="passConfirmInput" />
+		</div>
+	</div>
+	<div class="row justify-content-around text-center mt-3">
+		<div class="col m-2 text-start">
+			<button type="submit" class="btn btn-success">
+				Salvar Alterações
+			</button>
+		</div>
+	</div>
+</form>

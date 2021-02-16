@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { faHandHoldingUsd } from "@fortawesome/free-solid-svg-icons";
 
 @Component({
 	selector: "app-deposit",
@@ -6,6 +7,7 @@ import { Component, OnInit } from "@angular/core";
 	styleUrls: ["./deposit.component.scss"]
 })
 export class DepositComponent implements OnInit {
+	faHandHoldingUsd = faHandHoldingUsd;
 	constructor() {}
 
 	ngOnInit(): void {}

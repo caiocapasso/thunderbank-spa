@@ -1,4 +1,67 @@
-<main>
-  <p>Conteúdo</p>
-  <p>Somar 2 + 2 = {{somar(2, 2)}}</p>
+<main id="container">
+	<!-- SECTION 1 -->
+	<app-main-logo></app-main-logo>
+	<div class="row align-items-center m-5">
+		<div class="col-sm-12 col-md-6 bg-custom text-center">
+			<img
+				src="../../../assets/img/happy_person.png"
+				alt="imagem"
+				class="img-fluid img-custom-height"
+			/>
+		</div>
+		<div class="col">
+			<app-login-form class="d-flex justify-content-center"></app-login-form>
+		</div>
+	</div>
+	<!-- SECTION 2 -->
+	<div class="row align-items-center text-center m-5">
+		<div class="col-sm-12 col-md-6 text-center p-3">
+			<h2>Cartão de crédito sem limite</h2>
+			<p>
+				Tenha um cartão de crédito sem limite para gastar com tudo o que
+				desejar! Adoramos quando nossos cliente se endividam e depois
+				tem que negociar conosco. Temos uma equipe especializada para te
+				ajudar quando a fatura milionária chegar.
+			</p>
+			<a
+				class="btn btn-lg btn-outline-light"
+				routerLink="/register"
+				role="button"
+				>Seja nosso cliente!</a
+			>
+		</div>
+		<div class="col-sm-12 col-md-6 p-3">
+			<img
+				src="../../../assets/img/credit_card.png"
+				alt="imagem"
+				class="img-fluid img-custom-height rounded"
+			/>
+		</div>
+	</div>
+	<!-- SECTION 3 -->
+	<div class="row align-items-center text-center m-5">
+		<div class="col-sm-12 col-md-6 p-3">
+			<img
+				src="../../../assets/img/app.png"
+				alt="imagem"
+				class="img-fluid img-custom-height rounded"
+			/>
+		</div>
+		<div class="col-sm-12 col-md-6 text-center p-3">
+			<h2>Aplicativo para celular exclusivo</h2>
+			<p>
+				Além de nosso incrível portal online, todos os nossos clientes
+				também acesso ao nosso incrível aplicativo para smartphones
+				(Android e iOS) para poder realizar visualizações de fatura,
+				pagamentos, transferências, apostas no jogo do bicho e perder
+				dinheiro investindo na bolsa de ações.
+			</p>
+			<a
+				class="btn btn-lg btn-outline-light"
+				routerLink="/register"
+				role="button"
+				>Seja nosso cliente!</a
+			>
+		</div>
+	</div>
 </main>

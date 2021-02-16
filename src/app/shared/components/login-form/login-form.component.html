@@ -1,36 +1,57 @@
-<form class="form-signin" #form="ngForm" (submit)="onSubmit(form)">
-  <div class="form-group mt-3">
-    <input
-      type="text"
-      autocomplete="username"
-      class="form-control"
-      [class.is-invalid]="exibeErro('usuario', form)"
-      placeholder="Usuário"
-      [(ngModel)]="usuario"
-      name="usuario"
-      required
-      #usuarioInput
-    />
-    <div *ngIf="exibeErro('usuario', form)" class="invalid-feedback">
-      Usuário inválido
-    </div>
-  </div>
-  <div class="form-group mt-3">
-    <input
-      type="password"
-      autocomplete="current-password"
-      class="form-control"
-      [class.is-invalid]="exibeErro('senha', form)"
-      placeholder="Senha"
-      [(ngModel)]="senha"
-      name="senha"
-      required
-      #senhaInput
-    />
-    <div *ngIf="exibeErro('senha', form)" class="invalid-feedback">
-      Senha inválida
-    </div>
-  </div>
+<form
+	id="login-form"
+	class="card m-3 form-control text-dark"
+	#form="ngForm"
+	(submit)="onSubmit(form)"
+>
+	<h2 class="mt-3 text-center">Acesse sua conta</h2>
+	<div class="m-5">
+		<div class="form-group mt-3">
+			<input
+				type="text"
+				autocomplete="username"
+				class="form-control"
+				[class.is-invalid]="validateInput('usuario', form)"
+				placeholder="Usuário"
+				[(ngModel)]="usuario"
+				name="usuario"
+				required
+				#usuarioInput
+			/>
+			<div
+				*ngIf="validateInput('usuario', form)"
+				class="invalid-feedback"
+			>
+				Usuário inválido
+			</div>
+		</div>
+		<div class="form-group mt-3">
+			<input
+				type="password"
+				autocomplete="current-password"
+				class="form-control"
+				[class.is-invalid]="validateInput('senha', form)"
+				placeholder="Senha"
+				[(ngModel)]="senha"
+				name="senha"
+				required
+				#senhaInput
+			/>
+			<div *ngIf="validateInput('senha', form)" class="invalid-feedback">
+				Senha inválida
+			</div>
+		</div>
 
-  <button type="submit" class="btn btn-primary mt-3">Entrar</button>
+		<div *ngIf="!isLoading">
+			<button type="submit" class="btn btn-primary mt-3">Entrar</button>
+		</div>
+		<div *ngIf="isLoading" class="mt-3">
+			<app-spinning-loader></app-spinning-loader>
+		</div>
+		<div class="mt-4">
+			<a routerLink="/recover">Recupere sua senha</a>
+			<br />
+			<a routerLink="register">Crie sua conta agora mesmo!</a>
+		</div>
+	</div>
 </form>

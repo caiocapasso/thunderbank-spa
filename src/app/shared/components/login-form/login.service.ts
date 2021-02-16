@@ -15,13 +15,12 @@ export class LoginService {
 		private authService: AuthService
 	) {}
 
-	logar(credenciais: Login): Observable<LoginResponse> {
-		console.log("loginService.logar()");
+	login(credenciais: Login): Observable<LoginResponse> {
 		return this.httpClient
 			.post<LoginResponse>(`${environment.API_URL}login`, credenciais)
 			.pipe(
 				tap((response) => {
-					this.authService.setUsuario(response.usuario);
+					this.authService.setUser(response.usuario);
 					this.authService.setToken(response.token);
 				}),
 				map((response) => {
@@ -29,5 +28,9 @@ export class LoginService {
 					return response;
 				})
 			);
+	}
+
+	logout(): void {
+		this.authService.logout();
 	}
 }

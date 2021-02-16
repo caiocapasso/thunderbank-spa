@@ -22,6 +22,18 @@ import { LoginFormComponent } from "./shared/components/login-form/login-form.co
 import { ProfileComponent } from "./pages/auth-area/dashboard/profile/profile.component";
 import { SpinningLoaderComponent } from "./shared/components/spinning-loader/spinning-loader.component";
 import { RecoverComponent } from "./pages/recover/recover.component";
+import { RecoverFormComponent } from "./pages/recover/recover-form/recover-form.component";
+import { RegisterFormComponent } from "./pages/register/register-form/register-form.component";
+import { MainLogoComponent } from "./shared/components/main-logo/main-logo.component";
+import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
+import { DepositFormComponent } from "./pages/auth-area/dashboard/deposit/deposit-form/deposit-form.component";
+import { CreateComponent } from "./pages/auth-area/dashboard/account-plan/create/create.component";
+import { PaymentFormComponent } from "./pages/auth-area/dashboard/payment/payment-form/payment-form.component";
+import { ProfileFormComponent } from "./pages/auth-area/dashboard/profile/profile-form/profile-form.component";
+import { TransferFormComponent } from "./pages/auth-area/dashboard/transfer/transfer-form/transfer-form.component";
+import { TransferComponent } from "./pages/auth-area/dashboard/transfer/transfer.component";
+import { DepositComponent } from "./pages/auth-area/dashboard/deposit/deposit.component";
+import { SelectAccountPlanComponent } from './shared/components/select-account-plan/select-account-plan.component';
 
 registerLocaleData(localePT, "pt");
 
@@ -37,14 +49,30 @@ registerLocaleData(localePT, "pt");
 		Error404Component,
 		AuthAreaComponent,
 		PaymentComponent,
-		RegisterComponent,
+		RegisterFormComponent,
 		AccountPlanComponent,
 		LoginFormComponent,
 		ProfileComponent,
 		SpinningLoaderComponent,
-		RecoverComponent
+		RecoverComponent,
+		RecoverFormComponent,
+		MainLogoComponent,
+		DepositFormComponent,
+		DepositComponent,
+		CreateComponent,
+		PaymentFormComponent,
+		ProfileFormComponent,
+		TransferComponent,
+		TransferFormComponent,
+		SelectAccountPlanComponent
 	],
-	imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
+	imports: [
+		BrowserModule,
+		AppRoutingModule,
+		FormsModule,
+		HttpClientModule,
+		FontAwesomeModule
+	],
 	providers: [
 		{
 			provide: LOCALE_ID,
