@@ -1,4 +1,6 @@
 import { Component, OnInit } from "@angular/core";
+import { Usuario } from "src/app/shared/models/usuario.model";
+import { AuthService } from "src/app/shared/services/auth.service";
 
 @Component({
 	selector: "app-dashboard",
@@ -6,7 +8,11 @@ import { Component, OnInit } from "@angular/core";
 	styleUrls: ["./dashboard.component.scss"]
 })
 export class DashboardComponent implements OnInit {
-	constructor() {}
+	usuario: Usuario | undefined;
 
-	ngOnInit(): void {}
+	constructor(private authService: AuthService) {}
+
+	ngOnInit(): void {
+		this.usuario = this.authService.getUsuario();
+	}
 }

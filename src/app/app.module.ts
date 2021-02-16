@@ -4,6 +4,8 @@ import { DEFAULT_CURRENCY_CODE, LOCALE_ID, NgModule } from "@angular/core";
 import { FormsModule } from "@angular/forms";
 import { BrowserModule } from "@angular/platform-browser";
 
+import { HttpClientModule } from "@angular/common/http";
+
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 import { AuthAreaComponent } from "./pages/auth-area/auth-area.component";
@@ -42,7 +44,7 @@ registerLocaleData(localePT, "pt");
 		SpinningLoaderComponent,
 		RecoverComponent
 	],
-	imports: [BrowserModule, AppRoutingModule, FormsModule],
+	imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
 	providers: [
 		{
 			provide: LOCALE_ID,

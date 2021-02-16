@@ -9,6 +9,7 @@
       [(ngModel)]="usuario"
       name="usuario"
       required
+      #usuarioInput
     />
     <div *ngIf="exibeErro('usuario', form)" class="invalid-feedback">
       Usuário inválido
@@ -24,6 +25,7 @@
       [(ngModel)]="senha"
       name="senha"
       required
+      #senhaInput
     />
     <div *ngIf="exibeErro('senha', form)" class="invalid-feedback">
       Senha inválida
