@@ -19,7 +19,7 @@
                 <div class="card-body" style="min-height: 150px">
                     <h5 class="card-title">Saldo disponível</h5>
                     <p class="card-text" style="font-size: 30px">
-                        <strong data-saldo-disponivel>{{dashBoard.saldo}}</strong
+                        <strong data-saldo-disponivel>{{dashBoard?.saldo}}</strong
 									>
 								</p>
 							</div>
@@ -38,7 +38,7 @@
                     </p>
                     <p class="card-text">
                         Limite disponível
-                        <strong data-limite-disponivel>{{dashBoard.limite}}</strong
+                        <strong data-limite-disponivel>{{dashBoard?.limite}}</strong
 									>
 								</p>
 							</div>
@@ -53,10 +53,15 @@
 								lançamentos
 							</div>
 							<div class="card-body">
-								<ul
-									id="ultimos-lancamentos"
-									class="list-group"
-								></ul>
+								<ul *ngFor="let lancamento of lancamentos">
+									<li class="list-group-item">
+										<div>
+											<h4>{{lancamento.valor}}</h4>
+											<h6>{{lancamento.dataHora}}</h6>
+											<h6>{{lancamento.descricao}}</h6>
+										</div>
+									</li>
+								</ul>
 							</div>
 						</div>
 					</div>

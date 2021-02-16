@@ -1,6 +1,4 @@
 import { Component, OnInit } from "@angular/core";
-import { Usuario } from "src/app/shared/models/usuario.model";
-import { AuthService } from "src/app/shared/services/auth.service";
 import {
 	faMoneyCheckAlt,
 	faCreditCard,
@@ -10,6 +8,9 @@ import {
 	faHandHoldingUsd,
 	faCoins
 } from "@fortawesome/free-solid-svg-icons";
+
+import { Usuario } from "src/app/shared/models/usuario.model";
+import { AuthService } from "src/app/shared/services/auth.service";
 import { DashboardService } from "src/app/shared/services/dashboard.service";
 import { LancamentoService } from "src/app/shared/services/lancamento.service";
 
@@ -35,8 +36,11 @@ export class DashboardComponent implements OnInit {
 
 	ngOnInit(): void {
 		this.usuario = this.authService.getUser();
-		this.dashBoardService.obterSaldo().subscribe(response => this.dashBoard = response);
-		this.lancamentoService.obterLancamentos().subscribe(response => this.lancamentos = response);
-		console.log(this.lancamentos);
+		this.dashBoardService.obterSaldo().subscribe(response => {
+			this.dashBoard = response
+		});
+		this.lancamentoService.obterLancamentos().subscribe(response => {
+			this.lancamentos = response
+		});
 	}
 }
