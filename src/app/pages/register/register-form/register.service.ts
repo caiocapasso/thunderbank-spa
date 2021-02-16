@@ -8,9 +8,10 @@ import { environment } from "src/environments/environment";
 	providedIn: "root"
 })
 export class RegisterService {
-	constructor(private httpClient: HttpClient) {}
+	constructor(private httpClient: HttpClient) { }
 
 	register(credenciais: Register): Observable<object> {
+		console.log("exibindo o que tá vindo" + JSON.stringify(credenciais))
 		return this.httpClient.post(`${environment.API_URL}usuario`, {
 			...credenciais,
 			saldo: 1000

@@ -20,16 +20,16 @@ export class RegisterFormComponent {
 	isLoading = false;
 	hasError = false;
 
-	@ViewChild("cpfInput") cpfInput: ElementRef | undefined;
+	/*@ViewChild("cpfInput") cpfInput: ElementRef | undefined;
 	@ViewChild("nomeInput") nomeInput: ElementRef | undefined;
 	@ViewChild("telInput") telInput: ElementRef | undefined;
 	@ViewChild("loginInput") loginInput: ElementRef | undefined;
 	@ViewChild("senhaInput") senhaInput: ElementRef | undefined;
-
+*/
 	constructor(
 		private registerService: RegisterService,
 		private router: Router
-	) {}
+	) { }
 
 	onSubmit(form: NgForm): void {
 		console.log("form was submmited", form);
@@ -62,7 +62,7 @@ export class RegisterFormComponent {
 		const userData = {
 			cpf: this.cpf,
 			nome: this.nome,
-			tel: this.tel,
+			telefone: this.tel,
 			login: this.login,
 			senha: this.senha
 		};
