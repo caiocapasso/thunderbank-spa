@@ -11,15 +11,15 @@
 				type="text"
 				autocomplete="username"
 				class="form-control"
-				[class.is-invalid]="validateInput('usuario', form)"
-				placeholder="Usuário"
-				[(ngModel)]="usuario"
-				name="usuario"
+				[class.is-invalid]="validateInput('login', form)"
+				placeholder="Login"
+				[(ngModel)]="login"
+				name="login"
 				required
-				#usuarioInput
+				#loginInput
 			/>
 			<div
-				*ngIf="validateInput('usuario', form)"
+				*ngIf="validateInput('login', form)"
 				class="invalid-feedback"
 			>
 				Usuário inválido

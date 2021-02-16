@@ -11,18 +11,17 @@ import { LoginService } from "./login.service";
 	styleUrls: ["./login-form.component.scss"]
 })
 export class LoginFormComponent {
-	usuario = "";
+	login = "";
 	senha = "";
 	isLoading = false;
 	hasError = false;
 
-	@ViewChild("usuarioInput") userInput: ElementRef | undefined;
+	@ViewChild("loginInput") loginInput: ElementRef | undefined;
 	@ViewChild("senhaInput") passInput: ElementRef | undefined;
 
-	constructor(private loginService: LoginService, private router: Router) { }
+	constructor(private loginService: LoginService, private router: Router) {}
 
 	onSubmit(form: NgForm): void {
-
 		if (!form.valid) {
 			console.log("form is not valid");
 			Object.keys(form.controls).forEach((key) => {
@@ -31,7 +30,7 @@ export class LoginFormComponent {
 			return;
 		}
 
-		this.login();
+		this.userLogin();
 	}
 
 	validateInput(inputName: string, form: NgForm): boolean {
@@ -44,12 +43,12 @@ export class LoginFormComponent {
 		);
 	}
 
-	login(): void {
+	userLogin(): void {
 		this.hasError = false;
 		this.isLoading = true;
 
 		const userData = {
-			login: this.usuario,
+			login: this.login,
 			senha: this.senha
 		};
 
@@ -60,16 +59,16 @@ export class LoginFormComponent {
 				finalize(() => (this.isLoading = false))
 			)
 			.subscribe(
-				() => this.onSuccessLogin(),
-				(error) => this.onErrorLogin(error)
+				() => this.onSuccess(),
+				(error) => this.onError(error)
 			);
 	}
 
-	onSuccessLogin(): void {
+	onSuccess(): void {
 		void this.router.navigate(["dashboard"]);
 	}
 
-	onErrorLogin(error: HttpErrorResponse): void {
+	onError(error: HttpErrorResponse): void {
 		this.hasError = true;
 		console.log("onErrorLogin ->  ", error);
 	}

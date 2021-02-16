@@ -14,7 +14,7 @@
 				class="form-control"
 				[class.is-invalid]="validateInput('cpf', form)"
 				placeholder="CPF"
-				[(ngModel)]="cpf"
+				[(ngModel)]="dados.cpf"
 				name="cpf"
 				required
 				#cpfInput
@@ -31,10 +31,10 @@
 				class="form-control"
 				[class.is-invalid]="validateInput('tel', form)"
 				placeholder="Telefone (com DDD)"
-				[(ngModel)]="tel"
+				[(ngModel)]="dados.tel"
 				name="tel"
 				required
-				#tlInput
+				#telInput
 			/>
 			<div *ngIf="validateInput('tel', form)" class="invalid-feedback">
 				Telefone Inválido
@@ -48,7 +48,7 @@
 				class="form-control"
 				[class.is-invalid]="validateInput('nome', form)"
 				placeholder="Nome"
-				[(ngModel)]="nome"
+				[(ngModel)]="dados.nome"
 				name="nome"
 				required
 				#nomeInput
@@ -65,7 +65,7 @@
 				class="form-control"
 				[class.is-invalid]="validateInput('login', form)"
 				placeholder="Login"
-				[(ngModel)]="login"
+				[(ngModel)]="dados.login"
 				name="login"
 				required
 				#loginInput
@@ -85,7 +85,7 @@
 				class="form-control"
 				[class.is-invalid]="validateInput('senha', form)"
 				placeholder="Senha"
-				[(ngModel)]="senha"
+				[(ngModel)]="dados.senha"
 				name="senha"
 				required
 				#senhaInput

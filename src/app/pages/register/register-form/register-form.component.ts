@@ -3,6 +3,7 @@ import { Component, ElementRef, ViewChild } from "@angular/core";
 import { NgForm } from "@angular/forms";
 import { Router } from "@angular/router";
 import { finalize, take } from "rxjs/operators";
+import { Register } from "../../../shared/models/register.model";
 import { RegisterService } from "./register.service";
 
 @Component({
@@ -11,25 +12,29 @@ import { RegisterService } from "./register.service";
 	styleUrls: ["./register-form.component.scss"]
 })
 export class RegisterFormComponent {
-	cpf = "";
-	nome = "";
-	tel = "";
-	login = "";
-	senha = "";
+	dados: Register = {
+		cpf: "",
+		nome: "",
+		tel: "",
+		login: "",
+		senha: ""
+	};
+
 	aceite = false;
+
 	isLoading = false;
 	hasError = false;
 
-	/*@ViewChild("cpfInput") cpfInput: ElementRef | undefined;
+	@ViewChild("cpfInput") cpfInput: ElementRef | undefined;
 	@ViewChild("nomeInput") nomeInput: ElementRef | undefined;
 	@ViewChild("telInput") telInput: ElementRef | undefined;
 	@ViewChild("loginInput") loginInput: ElementRef | undefined;
 	@ViewChild("senhaInput") senhaInput: ElementRef | undefined;
-*/
+
 	constructor(
 		private registerService: RegisterService,
 		private router: Router
-	) { }
+	) {}
 
 	onSubmit(form: NgForm): void {
 		console.log("form was submmited", form);
@@ -42,7 +47,15 @@ export class RegisterFormComponent {
 			return;
 		}
 
-		this.register();
+		for (const control of Object.keys(form.controls)) {
+			if (form.controls[control].invalid) {
+				const input = `${control}Input` as keyof RegisterFormComponent;
+				(this[input] as ElementRef).nativeElement.focus();
+				break;
+			}
+		}
+
+		this.userRegister();
 	}
 
 	validateInput(inputName: string, form: NgForm): boolean {
@@ -55,36 +68,28 @@ export class RegisterFormComponent {
 		);
 	}
 
-	register(): void {
+	userRegister(): void {
 		this.hasError = false;
 		this.isLoading = true;
 
-		const userData = {
-			cpf: this.cpf,
-			nome: this.nome,
-			telefone: this.tel,
-			login: this.login,
-			senha: this.senha
-		};
-
 		this.registerService
-			.register(userData)
+			.register(this.dados)
 			.pipe(
 				take(1),
 				finalize(() => (this.isLoading = false))
 			)
 			.subscribe(
-				() => this.onSuccessLogin(),
-				(error) => this.onErrorLogin(error)
+				() => this.onSuccess(),
+				(error) => this.onError(error)
 			);
 	}
 
-	onSuccessLogin(): void {
+	onSuccess(): void {
 		//alert de sucesso
 		void this.router.navigate(["login"]);
 	}
 
-	onErrorLogin(error: HttpErrorResponse): void {
+	onError(error: HttpErrorResponse): void {
 		this.hasError = true;
 		console.log("onError ->  ", error);
 	}
