@@ -3,10 +3,24 @@
         <input id="contaInput" type="text" [class.is-invalid]="validateInput('contaId', form)" placeholder="Conta" [(ngModel)]="dados.contaDestinoNumero" name="contaId" required #contaIdInput />
     </div>
     <div class="col form-group m-3">
-        <input id="valorInput" type="number" [class.is-invalid]="validateInput('valor', form)" placeholder="Valor" [(ngModel)]="dados.valor" name="valor" required #valorInput />
+        <input
+            id="valorInput"
+            type="text"
+            [class.is-invalid]="validateInput('valor', form)"
+            placeholder="Valor"
+            [(ngModel)]="dados.valor"
+            name="valor"
+            required
+            #valorInput
+            mask="separator.2"
+            [thousandSeparator]="'.'"
+            [decimalMarker]="','"
+            [dropSpecialCharacters]="true"
+            prefix="R$ "
+        />
     </div>
     <div class="col form-group m-3">
-        <input id="descricaoInput" type="text" [class.is-invalid]="validateInput('descricao', form)" placeholder="Descrição" [(ngModel)]="dados.descricao" name="descricao" required #descricaoInput />
+        <input id="descricaoInput" type="text" class="form-control" [class.is-invalid]="validateInput('descricao', form)" placeholder="Descrição" [(ngModel)]="dados.descricao" name="descricao" required #descricaoInput />
     </div>
     <div class="col form-group m-3">
         <app-select-account-plan (plano)="pegarValorSelect($event)" [tipo]=2></app-select-account-plan>
