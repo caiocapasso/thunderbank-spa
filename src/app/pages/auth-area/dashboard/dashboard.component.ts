@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { ActivatedRoute } from "@angular/router";
 import {
 	faMoneyCheckAlt,
 	faCreditCard,
@@ -11,7 +12,6 @@ import {
 
 import { Usuario } from "src/app/shared/models/usuario.model";
 import { AuthService } from "src/app/shared/services/auth.service";
-import { DashboardService } from "src/app/shared/services/dashboard.service";
 import { LancamentoService } from "src/app/shared/services/lancamento.service";
 
 @Component({
@@ -28,19 +28,17 @@ export class DashboardComponent implements OnInit {
 	faHandHoldingUsd = faHandHoldingUsd;
 	faCoins = faCoins;
 
-	usuario: any;
+	usuario: Usuario | undefined;
 	dashBoard: any;
 	lancamentos: any;
 
-	constructor(private authService: AuthService, private dashBoardService: DashboardService, private lancamentoService: LancamentoService) { }
+	constructor(private activatedRoute: ActivatedRoute, private authService: AuthService, private lancamentoService: LancamentoService) { }
 
 	ngOnInit(): void {
 		this.usuario = this.authService.getUser();
-		this.dashBoardService.obterSaldo().subscribe(response => {
-			this.dashBoard = response
-		});
 		this.lancamentoService.obterLancamentos().subscribe(response => {
 			this.lancamentos = response
 		});
+		this.dashBoard = this.activatedRoute.snapshot.data.dashBoard;
 	}
 }

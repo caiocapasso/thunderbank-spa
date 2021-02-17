@@ -4,6 +4,7 @@ import { RouterModule, Routes } from "@angular/router";
 import { AuthAreaComponent } from "./pages/auth-area/auth-area.component";
 import { AccountPlanComponent } from "./pages/auth-area/dashboard/account-plan/account-plan.component";
 import { DashboardComponent } from "./pages/auth-area/dashboard/dashboard.component";
+import { DashBoardResolver } from "./pages/auth-area/dashboard/dashboard.resolver";
 import { DepositComponent } from "./pages/auth-area/dashboard/deposit/deposit.component";
 import { PaymentComponent } from "./pages/auth-area/dashboard/payment/payment.component";
 import { ProfileComponent } from "./pages/auth-area/dashboard/profile/profile.component";
@@ -24,7 +25,8 @@ const routes: Routes = [
 		children: [
 			{
 				path: "dashboard",
-				component: DashboardComponent
+				component: DashboardComponent,
+				resolve: { dashBoard: DashBoardResolver }
 			},
 			{
 				path: "dashboard/account-plan",
