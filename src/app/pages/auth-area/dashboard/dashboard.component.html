@@ -41,6 +41,7 @@
 				<ul *ngFor="let lancamento of lancamentos">
 					<li class="list-group-item">
 						<div>
+							<h3>{{lancamento.contaTipo}}</h3>
 							<h4>{{lancamento.valor}}</h4>
 							<h6>{{lancamento.dataHora}}</h6>
 							<h6>{{lancamento.descricao}}</h6>

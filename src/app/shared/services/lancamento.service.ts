@@ -12,13 +12,13 @@ export class LancamentoService {
 	constructor(private http: HttpClient, private authService: AuthService) { }
 
 	obterLancamentos(): Observable<any> {
-		const usuario = this.authService.getUser();
+
 		const headers = new HttpHeaders({
 			"Content-Type": "application/json",
 			authorization: `Bearer ${this.authService.getToken()}`
 		});
 		return this.http.get(
-			`${environment.API_URL}lancamento/${usuario.contas[0]}`,
+			`${environment.API_URL}lancamento`,
 			{ headers }
 		);
 	}

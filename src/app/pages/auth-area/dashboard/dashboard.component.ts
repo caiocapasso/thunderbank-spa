@@ -30,14 +30,18 @@ export class DashboardComponent implements OnInit {
 
 	usuario: Usuario | undefined;
 	dashBoard: any;
-	lancamentos: any;
+	lancamentos: any[] = [];
 
 	constructor(private activatedRoute: ActivatedRoute, private authService: AuthService, private lancamentoService: LancamentoService) { }
 
 	ngOnInit(): void {
 		this.usuario = this.authService.getUser();
 		this.lancamentoService.obterLancamentos().subscribe(response => {
-			this.lancamentos = response
+			response.forEach((e: any) => {
+				let tipo = this.authService.getUser()?.contas.indexOf(e.contaId);
+				e.contaTipo = tipo == 0 ? 'Conta Débito' : 'Conta Crédito';
+				this.lancamentos.push(e);
+			})
 		});
 		this.dashBoard = this.activatedRoute.snapshot.data.dashBoard;
 	}
