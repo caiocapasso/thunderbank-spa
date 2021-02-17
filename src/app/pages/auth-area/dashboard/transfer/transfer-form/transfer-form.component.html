@@ -1,6 +1,6 @@
 <form id="transferencia-form" id="login-form" #form="ngForm" (submit)="onSubmit(form)">
     <div class="col form-group m-3">
-        <input id="contaInput" type="text" [class.is-invalid]="validateInput('contaId', form)" placeholder="Conta" [(ngModel)]="dados.contaId" name="contaId" required #contaIdInput />
+        <input id="contaInput" type="text" [class.is-invalid]="validateInput('contaId', form)" placeholder="Conta" [(ngModel)]="dados.contaDestinoNumero" name="contaId" required #contaIdInput />
     </div>
     <div class="col form-group m-3">
         <input id="valorInput" type="number" [class.is-invalid]="validateInput('valor', form)" placeholder="Valor" [(ngModel)]="dados.valor" name="valor" required #valorInput />
@@ -13,7 +13,7 @@
     </div>
     <div class="col m-3 text-center">
         <button type="submit" class="btn btn-labeled btn-success m-2 p-2">
-			Depositar
+			Transferir
 		</button>
     </div>
 </form>
