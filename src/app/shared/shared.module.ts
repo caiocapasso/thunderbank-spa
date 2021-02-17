@@ -9,6 +9,8 @@ import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 import { FormsModule } from "@angular/forms";
 import { HttpClientModule } from "@angular/common/http";
 import { SidebarComponent } from "./components/sidebar/sidebar.component";
+import { SelectAccountPlanComponent } from "./components/select-account-plan/select-account-plan.component";
+import { RouterModule } from "@angular/router";
 
 @NgModule({
 	declarations: [
@@ -17,16 +19,24 @@ import { SidebarComponent } from "./components/sidebar/sidebar.component";
 		SpinningLoaderComponent,
 		MainLogoComponent,
 		LoginFormComponent,
-		SidebarComponent
+		SidebarComponent,
+		SelectAccountPlanComponent
 	],
-	imports: [CommonModule, FontAwesomeModule, FormsModule, HttpClientModule],
+	imports: [
+		CommonModule,
+		FontAwesomeModule,
+		FormsModule,
+		HttpClientModule,
+		RouterModule
+	],
 	exports: [
 		HeaderComponent,
 		FooterComponent,
 		SpinningLoaderComponent,
 		MainLogoComponent,
 		LoginFormComponent,
-		SidebarComponent
+		SidebarComponent,
+		SelectAccountPlanComponent
 	]
 })
 export class SharedModule {}

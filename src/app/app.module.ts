@@ -7,29 +7,18 @@ import { HttpClientModule } from "@angular/common/http";
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 import { AuthAreaComponent } from "./pages/auth-area/auth-area.component";
-import { Error404Component } from "./pages/error404/error404.component";
-import { HomeComponent } from "./pages/home/home.component";
-import { RegisterComponent } from "./pages/register/register.component";
-import { RecoverComponent } from "./pages/recover/recover.component";
-import { RecoverFormComponent } from "./pages/recover/recover-form/recover-form.component";
-import { RegisterFormComponent } from "./pages/register/register-form/register-form.component";
 import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 import { SharedModule } from "./shared/shared.module";
 import { AuthAreaModule } from "./pages/auth-area/auth-area.module";
+import { HomeModule } from "./pages/home/home.module";
+import { RegisterModule } from "./pages/register/register.module";
+import { RecoverModule } from "./pages/recover/recover.module";
+import { Error404Module } from "./pages/error404/error404.module";
 
 registerLocaleData(localePT, "pt");
 
 @NgModule({
-	declarations: [
-		AppComponent,
-		HomeComponent,
-		Error404Component,
-		AuthAreaComponent,
-		RegisterComponent,
-		RegisterFormComponent,
-		RecoverComponent,
-		RecoverFormComponent
-	],
+	declarations: [AppComponent],
 	imports: [
 		CommonModule,
 		FontAwesomeModule,
@@ -37,8 +26,12 @@ registerLocaleData(localePT, "pt");
 		AppRoutingModule,
 		FormsModule,
 		HttpClientModule,
-		SharedModule,
-		AuthAreaModule
+
+		AuthAreaModule,
+		HomeModule,
+		RegisterModule,
+		RecoverModule,
+		Error404Module
 	],
 	providers: [
 		{

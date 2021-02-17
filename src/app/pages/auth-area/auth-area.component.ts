@@ -1,4 +1,6 @@
 import { Component, OnInit } from "@angular/core";
+import { Router } from "@angular/router";
+import { AuthService } from "src/app/shared/services/auth.service";
 
 @Component({
 	selector: "app-auth-area",
@@ -6,7 +8,17 @@ import { Component, OnInit } from "@angular/core";
 	styleUrls: ["./auth-area.component.scss"]
 })
 export class AuthAreaComponent implements OnInit {
-	constructor() {}
+	usuario = "";
 
-	ngOnInit(): void {}
+	constructor(private router: Router, private authService: AuthService) {}
+
+	ngOnInit() {
+		this.usuario = this.authService.getUser().nome;
+	}
+
+	logout(): void {
+		console.log("user logged out");
+		this.authService.logout();
+		void this.router.navigate(["home"]);
+	}
 }

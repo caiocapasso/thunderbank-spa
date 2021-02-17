@@ -18,21 +18,22 @@ import { CreateComponent } from "./dashboard/account-plan/create/create.componen
 import { HttpClientModule } from "@angular/common/http";
 import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 import { AuthAreaRoutingModule } from "./auth-area-routing.module";
+import { AuthAreaComponent } from "./auth-area.component";
 
 @NgModule({
 	declarations: [
+		AuthAreaComponent,
 		DashboardComponent,
-		PaymentComponent,
 		AccountPlanComponent,
-		ProfileComponent,
-		DepositFormComponent,
+		CreateComponent,
 		DepositComponent,
+		DepositFormComponent,
+		PaymentComponent,
 		PaymentFormComponent,
+		ProfileComponent,
 		ProfileFormComponent,
 		TransferComponent,
-		TransferFormComponent,
-		SelectAccountPlanComponent,
-		CreateComponent
+		TransferFormComponent
 	],
 	imports: [
 		CommonModule,

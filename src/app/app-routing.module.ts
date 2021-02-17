@@ -1,15 +1,11 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
-import { Error404Component } from "./pages/error404/error404.component";
-import { HomeComponent } from "./pages/home/home.component";
-import { RecoverComponent } from "./pages/recover/recover.component";
-import { RegisterComponent } from "./pages/register/register.component";
 import { LoggedUserGuard } from "./shared/guards/logged-user.guard";
 import { UnloggedUserGuard } from "./shared/guards/unlogged-user.guard";
 
 const routes: Routes = [
 	{
-		path: "",
+		path: "dashboard",
 		loadChildren: () =>
 			import("./pages/auth-area/auth-area.module").then(
 				(m) => m.AuthAreaModule
@@ -18,12 +14,16 @@ const routes: Routes = [
 	},
 	{
 		path: "home",
-		component: HomeComponent,
+		loadChildren: () =>
+			import("./pages/home/home.module").then((m) => m.HomeModule),
 		canActivate: [UnloggedUserGuard]
 	},
 	{
 		path: "register",
-		component: RegisterComponent,
+		loadChildren: () =>
+			import("./pages/register/register.module").then(
+				(m) => m.RegisterModule
+			),
 		canActivate: [UnloggedUserGuard]
 	},
 	{
@@ -34,7 +34,10 @@ const routes: Routes = [
 	},
 	{
 		path: "recover",
-		component: RecoverComponent,
+		loadChildren: () =>
+			import("./pages/recover/recover.module").then(
+				(m) => m.RecoverModule
+			),
 		canActivate: [UnloggedUserGuard]
 	},
 	{
@@ -44,7 +47,10 @@ const routes: Routes = [
 	},
 	{
 		path: "**",
-		component: Error404Component
+		loadChildren: () =>
+			import("./pages/error404/error404.module").then(
+				(m) => m.Error404Module
+			)
 	}
 ];
 
