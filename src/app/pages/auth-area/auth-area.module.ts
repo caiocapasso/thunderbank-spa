@@ -5,12 +5,11 @@ import { FormsModule } from "@angular/forms";
 import { SharedModule } from "src/app/shared/shared.module";
 import { DashboardComponent } from "./dashboard/dashboard.component";
 import { PaymentComponent } from "./dashboard/payment/payment.component";
-import { SelectAccountPlanComponent } from "src/app/shared/components/select-account-plan/select-account-plan.component";
 import { AccountPlanComponent } from "./dashboard/account-plan/account-plan.component";
 import { DepositFormComponent } from "./dashboard/deposit/deposit-form/deposit-form.component";
 import { DepositComponent } from "./dashboard/deposit/deposit.component";
 import { PaymentFormComponent } from "./dashboard/payment/payment-form/payment-form.component";
-import { CreditCardFormComponent } from "./dashboard/credit-card/credit-card-form/credit-card-form.component"
+import { CreditCardFormComponent } from "./dashboard/credit-card/credit-card-form/credit-card-form.component";
 import { ProfileFormComponent } from "./dashboard/profile/profile-form/profile-form.component";
 import { ProfileComponent } from "./dashboard/profile/profile.component";
 import { TransferFormComponent } from "./dashboard/transfer/transfer-form/transfer-form.component";
@@ -20,8 +19,10 @@ import { HttpClientModule } from "@angular/common/http";
 import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 import { AuthAreaRoutingModule } from "./auth-area-routing.module";
 import { AuthAreaComponent } from "./auth-area.component";
-import { CreditCardComponent } from './dashboard/credit-card/credit-card.component';
+import { CreditCardComponent } from "./dashboard/credit-card/credit-card.component";
+import { IConfig, NgxMaskModule } from "ngx-mask";
 
+export const options: Partial<IConfig> | (() => Partial<IConfig>) = {};
 @NgModule({
 	declarations: [
 		AuthAreaComponent,
@@ -45,7 +46,8 @@ import { CreditCardComponent } from './dashboard/credit-card/credit-card.compone
 		FontAwesomeModule,
 		FormsModule,
 		HttpClientModule,
-		SharedModule
+		SharedModule,
+		NgxMaskModule.forRoot()
 	]
 })
 export class AuthAreaModule {}

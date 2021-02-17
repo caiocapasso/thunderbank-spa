@@ -7,13 +7,18 @@
 	<div class="col form-group m-3">
 		<input
 			id="valorInput"
-			type="number"
+			type="text"
 			[class.is-invalid]="validateInput('valor', form)"
 			placeholder="Valor"
 			[(ngModel)]="dados.valor"
 			name="valor"
 			required
 			#valorInput
+            mask="separator.2"
+            [thousandSeparator]="'.'"
+            [decimalMarker]="','"
+            [dropSpecialCharacters]="true"
+            prefix="R$ "
 		/>
 	</div>
 	<div class="col form-group m-3">

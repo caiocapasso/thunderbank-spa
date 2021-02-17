@@ -6,9 +6,7 @@ import { BrowserModule } from "@angular/platform-browser";
 import { HttpClientModule } from "@angular/common/http";
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
-import { AuthAreaComponent } from "./pages/auth-area/auth-area.component";
 import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
-import { SharedModule } from "./shared/shared.module";
 import { AuthAreaModule } from "./pages/auth-area/auth-area.module";
 import { HomeModule } from "./pages/home/home.module";
 import { RegisterModule } from "./pages/register/register.module";
@@ -16,7 +14,6 @@ import { RecoverModule } from "./pages/recover/recover.module";
 import { Error404Module } from "./pages/error404/error404.module";
 
 registerLocaleData(localePT, "pt");
-
 @NgModule({
 	declarations: [AppComponent],
 	imports: [
@@ -26,7 +23,6 @@ registerLocaleData(localePT, "pt");
 		AppRoutingModule,
 		FormsModule,
 		HttpClientModule,
-
 		AuthAreaModule,
 		HomeModule,
 		RegisterModule,
