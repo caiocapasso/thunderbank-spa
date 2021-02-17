@@ -10,6 +10,7 @@ import { AccountPlanComponent } from "./dashboard/account-plan/account-plan.comp
 import { DepositFormComponent } from "./dashboard/deposit/deposit-form/deposit-form.component";
 import { DepositComponent } from "./dashboard/deposit/deposit.component";
 import { PaymentFormComponent } from "./dashboard/payment/payment-form/payment-form.component";
+import { CreditCardFormComponent } from "./dashboard/credit-card/credit-card-form/credit-card-form.component"
 import { ProfileFormComponent } from "./dashboard/profile/profile-form/profile-form.component";
 import { ProfileComponent } from "./dashboard/profile/profile.component";
 import { TransferFormComponent } from "./dashboard/transfer/transfer-form/transfer-form.component";
@@ -31,6 +32,7 @@ import { CreditCardComponent } from './dashboard/credit-card/credit-card.compone
 		DepositFormComponent,
 		PaymentComponent,
 		PaymentFormComponent,
+		CreditCardFormComponent,
 		ProfileComponent,
 		ProfileFormComponent,
 		TransferComponent,

@@ -1,0 +1,40 @@
+<form
+	id="cartao-credito-form"
+	id="login-form"
+	#form="ngForm"
+	(submit)="onSubmit(form)"
+>
+	<div class="col form-group m-3">
+		<input
+			id="valorInput"
+			type="number"
+			[class.is-invalid]="validateInput('valor', form)"
+			placeholder="Valor"
+			[(ngModel)]="dados.valor"
+			name="valor"
+			required
+			#valorInput
+		/>
+	</div>
+	<div class="col form-group m-3">
+		<input
+			id="descricaoInput"
+			type="text"
+			class="form-control"
+			[class.is-invalid]="validateInput('descricao', form)"
+			placeholder="Descrição"
+			[(ngModel)]="dados.descricao"
+			name="descricao"
+			#descricaoInput
+		/>
+	</div>
+	<div class="col form-group m-3">
+    <!-- TODO: como eu pego o valor desse componente e salvo em uma variavel aqui? Como eu valido? -->
+		<app-select-account-plan></app-select-account-plan>
+	</div>
+	<div class="col m-3 text-center">
+		<button type="submit" class="btn btn-labeled btn-success m-2 p-2">
+			Pagar
+		</button>
+	</div>
+</form>
