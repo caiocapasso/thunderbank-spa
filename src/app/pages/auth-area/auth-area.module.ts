@@ -19,6 +19,7 @@ import { HttpClientModule } from "@angular/common/http";
 import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 import { AuthAreaRoutingModule } from "./auth-area-routing.module";
 import { AuthAreaComponent } from "./auth-area.component";
+import { CreditCardComponent } from './dashboard/credit-card/credit-card.component';
 
 @NgModule({
 	declarations: [
@@ -33,7 +34,8 @@ import { AuthAreaComponent } from "./auth-area.component";
 		ProfileComponent,
 		ProfileFormComponent,
 		TransferComponent,
-		TransferFormComponent
+		TransferFormComponent,
+		CreditCardComponent
 	],
 	imports: [
 		CommonModule,
