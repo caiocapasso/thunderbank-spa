@@ -20,7 +20,7 @@ const routes: Routes = [
 		component: AuthAreaComponent,
 		children: [
 			{
-				path: "dashboard/",
+				path: "",
 				component: DashboardComponent,
 				resolve: { dashBoard: DashBoardResolver }
 			},
