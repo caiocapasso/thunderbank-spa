@@ -16,7 +16,7 @@ export class DashboardService {
 
 		//const headers = new Headers({ "Content-Type": "application/json" });
 		const headers = new HttpHeaders({ "Content-Type": "application/json", "authorization": "Bearer " + this.authService.getToken() });
-		return this.http.get(`${environment.API_URL}conta/dashboard/${usuario.contas[0]}`, { headers: headers });
+		return this.http.get(`${environment.API_URL}conta/dashboard/${usuario.id}`, { headers: headers });
 	}
 }
 

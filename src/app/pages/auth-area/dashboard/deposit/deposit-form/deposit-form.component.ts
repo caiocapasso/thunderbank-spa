@@ -19,7 +19,7 @@ export class DepositFormComponent {
 		contaId: 0,
 		dataHora: new Date(),
 		descricao: "",
-		lancamentoTipo: "",
+		lancamentoTipo: "RECEITA",
 		planoContaId: 0,
 		valor: 0
 	};
@@ -34,7 +34,7 @@ export class DepositFormComponent {
 	constructor(
 		private lancamentoService: LancamentoService,
 		private router: Router
-	) {}
+	) { }
 
 	onSubmit(form: NgForm): void {
 		if (!form.valid) {
@@ -51,7 +51,7 @@ export class DepositFormComponent {
 				break;
 			}
 		}
-
+		//this.pegarValorSelect(valor: any)
 		this.submit();
 	}
 
@@ -89,5 +89,9 @@ export class DepositFormComponent {
 	onError(error: HttpErrorResponse): void {
 		this.hasError = true;
 		console.log("onError ->  ", error);
+	}
+
+	pegarValorSelect(valor: any) {
+		this.dados.planoContaId = valor;
 	}
 }

@@ -9,7 +9,7 @@ import { Lancamento } from "../models/lancamento.model";
 	providedIn: "root"
 })
 export class LancamentoService {
-	constructor(private http: HttpClient, private authService: AuthService) {}
+	constructor(private http: HttpClient, private authService: AuthService) { }
 
 	obterLancamentos(): Observable<any> {
 		const usuario = this.authService.getUser();
@@ -24,14 +24,16 @@ export class LancamentoService {
 	}
 
 	realizarLancamento(lancamento: Lancamento): Observable<any> {
+		console.log(lancamento);
 		const usuario = this.authService.getUser();
+		lancamento.contaId = usuario.contas[0];
 		const headers = new HttpHeaders({
 			"Content-Type": "application/json",
 			authorization: `Bearer ${this.authService.getToken()}`
 		});
 
 		return this.http.post(
-			`${environment.API_URL}lancamento/${usuario.contas[0]}`,
+			`${environment.API_URL}lancamento/`,
 			lancamento,
 			{ headers }
 		);

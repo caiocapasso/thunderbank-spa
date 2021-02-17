@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { PlanoContaService } from '../../services/plano-conta.service';
 
 @Component({
   selector: 'app-select-account-plan',
@@ -7,9 +8,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SelectAccountPlanComponent implements OnInit {
 
-  constructor() { }
+  @Output() plano = new EventEmitter<any>();
+  planosConta: any;
+
+  constructor(private planoContaService: PlanoContaService) { }
 
   ngOnInit(): void {
+    this.planoContaService.obterPlanosReceita().subscribe(response => {
+      this.planosConta = response;
+    })
+  }
+
+  pegarValor(event: any) {
+    this.plano.emit(event.value);
   }
 
 }
