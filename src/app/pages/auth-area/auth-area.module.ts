@@ -14,8 +14,8 @@ import { ProfileFormComponent } from "./dashboard/profile/profile-form/profile-f
 import { ProfileComponent } from "./dashboard/profile/profile.component";
 import { TransferFormComponent } from "./dashboard/transfer/transfer-form/transfer-form.component";
 import { TransferComponent } from "./dashboard/transfer/transfer.component";
-import { CreateComponent } from "./dashboard/account-plan/create/create.component";
-import { HttpClientModule } from "@angular/common/http";
+import { AccountPlanFormComponent } from "./dashboard/account-plan/account-plan-form/account-plan-form.component";
+//import { HttpClientModule } from "./dashboard/account-plan/account-plan-form/account-plan-form.component";
 import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 import { AuthAreaRoutingModule } from "./auth-area-routing.module";
 import { AuthAreaComponent } from "./auth-area.component";
@@ -28,7 +28,7 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) = {};
 		AuthAreaComponent,
 		DashboardComponent,
 		AccountPlanComponent,
-		CreateComponent,
+		AccountPlanFormComponent,
 		DepositComponent,
 		DepositFormComponent,
 		PaymentComponent,
@@ -45,7 +45,7 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) = {};
 		AuthAreaRoutingModule,
 		FontAwesomeModule,
 		FormsModule,
-		HttpClientModule,
+//		HttpClientModule,
 		SharedModule,
 		NgxMaskModule.forRoot()
 	]

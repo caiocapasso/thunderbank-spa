@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { faWallet } from "@fortawesome/free-solid-svg-icons";
 
 @Component({
 	selector: "app-account-plan",
@@ -6,6 +7,7 @@ import { Component, OnInit } from "@angular/core";
 	styleUrls: ["./account-plan.component.scss"]
 })
 export class AccountPlanComponent implements OnInit {
+	faWallet = faWallet;
 	constructor() {}
 
 	ngOnInit(): void {}
