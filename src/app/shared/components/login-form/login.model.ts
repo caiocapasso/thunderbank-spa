@@ -5,6 +5,7 @@ export interface Login {
 	senha: string;
 }
 
+//TODO: alterar isso pra ser interface correta, conforme o que o back realmente retorna
 export interface LoginResponse {
 	conta: {
 		descricao: string;

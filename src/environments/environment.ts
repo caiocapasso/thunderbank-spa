@@ -4,8 +4,9 @@
 
 export const environment = {
 	production: false,
+	API_URL: "https://bankline-accenture.herokuapp.com/"
 	//API_URL: "https://accenture-java-desafio.herokuapp.com/"
-	API_URL: "http://localhost:8080/"
+	//API_URL: "http://localhost:8080/"
 };
 
 /*

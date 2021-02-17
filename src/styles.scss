@@ -18,6 +18,11 @@ html {
 .logo-custom{
     text-shadow: 2px 2px lightslategray;
 }
+.logo-shadow {
+  -webkit-filter: drop-shadow( 3px 3px 2px rgba(0, 0, 0, .7));
+  filter: drop-shadow( 3px 3px 2px rgba(0, 183, 255, 0.7));
+  max-height: 80px;
+}
 
 .img-custom-height {
     max-height: 450px;
@@ -86,13 +91,6 @@ html {
     max-width: 600px;
 }
 
-
-.sidebar {
-    text-align: center;
-    align-items: center;
-    padding: 20px;
-    min-width: 110px;
-}
 
 .container {
     padding: 20px;

@@ -1,12 +1,29 @@
-<app-header></app-header>
+<!-- <app-header></app-header> -->
 <main id="container" class="min-vh-100">
-    <div class="row row-pad">
-        <div class="col-sm-12 col-md-2 sidebar">
-            <app-sidebar></app-sidebar>
-        </div>
-        <div class="col-sm-12 col-md-10">
-            <router-outlet></router-outlet>
-        </div>
-    </div>
+    <div class="m-3">
+        <div class="row row-pad">
+            <div class="col-sm-12 col-md-3">
+                <div class="row" style="min-height: 100px">
+                    <img class="logo-shadow align-self-center" src="../../../../assets/img/icon-thunder.svg" alt="logo" />
+                </div>
+                <div class="row">
+                    <app-sidebar></app-sidebar>
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-9 col-lg-7">
+                <div class="row" style="min-height: 100px">
+                    <h3 class="title-dashboard text-center align-self-center">
+                        Olá
+                        <span id="nome-usuario"><strong>{{usuario}}</strong></span
+						>, seja bem-vindo!
+					</h3>
+				</div>
+				<div class="row">
+					<router-outlet></router-outlet>
+				</div>
+			</div>
+		</div>
+	</div>
 </main>
+
 <app-footer></app-footer>
