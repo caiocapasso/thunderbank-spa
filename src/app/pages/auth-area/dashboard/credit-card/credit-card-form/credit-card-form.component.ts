@@ -89,4 +89,8 @@ export class CreditCardFormComponent {
 		this.hasError = true;
 		console.log("onError ->  ", error);
 	}
+
+	pegarValorSelect(valor: any) {
+		this.dados.planoContaId = valor;
+	}
 }

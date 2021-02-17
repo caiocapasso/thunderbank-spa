@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { PlanoContaService } from '../../services/plano-conta.service';
 
 @Component({
@@ -11,10 +11,12 @@ export class SelectAccountPlanComponent implements OnInit {
   @Output() plano = new EventEmitter<any>();
   planosConta: any;
 
+  @Input() tipo = 0;
+
   constructor(private planoContaService: PlanoContaService) { }
 
   ngOnInit(): void {
-    this.planoContaService.obterPlanosReceita().subscribe(response => {
+    this.planoContaService.obterPlanos(this.tipo).subscribe(response => {
       this.planosConta = response;
     })
   }

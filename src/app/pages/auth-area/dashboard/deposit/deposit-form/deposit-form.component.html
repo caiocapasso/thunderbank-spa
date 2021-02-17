@@ -7,7 +7,7 @@
     </div>
     <div class="col form-group m-3">
         <!-- TODO: como eu pego o valor desse componente e salvo em uma variavel aqui? Como eu valido? -->
-        <app-select-account-plan (plano)="pegarValorSelect($event)"></app-select-account-plan>
+        <app-select-account-plan (plano)="pegarValorSelect($event)" [tipo]=1></app-select-account-plan>
     </div>
     <div class="col m-3 text-center">
         <button type="submit" class="btn btn-labeled btn-success m-2 p-2">
