@@ -24,9 +24,6 @@ export class LancamentoService {
 	}
 
 	realizarLancamento(lancamento: Lancamento): Observable<any> {
-		console.log(lancamento);
-		const usuario = this.authService.getUser();
-		lancamento.contaId = usuario.contas[0];
 		const headers = new HttpHeaders({
 			"Content-Type": "application/json",
 			authorization: `Bearer ${this.authService.getToken()}`

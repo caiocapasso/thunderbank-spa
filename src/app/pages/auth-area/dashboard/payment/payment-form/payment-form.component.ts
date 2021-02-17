@@ -6,6 +6,7 @@ import { NgForm } from "@angular/forms";
 import { Router } from "@angular/router";
 import { finalize, take } from "rxjs/operators";
 import { Lancamento } from "src/app/shared/models/lancamento.model";
+import { AuthService } from "src/app/shared/services/auth.service";
 import { LancamentoService } from "src/app/shared/services/lancamento.service";
 @Component({
 	selector: "app-payment-form",
@@ -18,7 +19,7 @@ export class PaymentFormComponent {
 		contaId: 0,
 		dataHora: new Date(),
 		descricao: "",
-		lancamentoTipo: "",
+		lancamentoTipo: "DESPESA",
 		planoContaId: 0,
 		valor: 0
 	};
@@ -32,8 +33,9 @@ export class PaymentFormComponent {
 
 	constructor(
 		private lancamentoService: LancamentoService,
-		private router: Router
-	) {}
+		private router: Router,
+		private authService: AuthService
+	) { }
 
 	onSubmit(form: NgForm): void {
 		if (!form.valid) {
@@ -50,7 +52,6 @@ export class PaymentFormComponent {
 				break;
 			}
 		}
-
 		this.submit();
 	}
 
@@ -67,6 +68,12 @@ export class PaymentFormComponent {
 	submit(): void {
 		this.hasError = false;
 		this.isLoading = true;
+		const usuario = this.authService.getUser();
+		console.log("dados antes " + this.dados.contaId);
+		console.log("conta " + usuario.contas[this.dados.contaId]);
+		console.log("dados depois " + this.dados.contaId);
+		this.dados.contaId = usuario.contas[this.dados.contaId];
+
 
 		this.lancamentoService
 			.realizarLancamento(this.dados)
@@ -81,7 +88,6 @@ export class PaymentFormComponent {
 	}
 
 	onSuccess(): void {
-		//alert de sucesso
 		void this.router.navigate(["dashboard"]);
 	}
 
