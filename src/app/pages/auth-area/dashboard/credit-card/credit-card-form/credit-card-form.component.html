@@ -1,5 +1,5 @@
 <form
-	id="pagamento-form"
+	id="cartao-credito-form"
 	id="login-form"
 	#form="ngForm"
 	(submit)="onSubmit(form)"
@@ -27,13 +27,6 @@
 			name="descricao"
 			#descricaoInput
 		/>
-	</div>
-	<div class="col form-group m-3">
-		<select name="tipoPagamento" id="tipoPagamentos" class="form-control">
-			<option disabled selected value>Selecione o tipo de pagamento</option>
-			<option value="DEBITO">Débito em Conta</option>
-			<option value="CREDITO">Cartão de Crédito</option>
-		</select>
 	</div>
 	<div class="col form-group m-3">
     <!-- TODO: como eu pego o valor desse componente e salvo em uma variavel aqui? Como eu valido? -->

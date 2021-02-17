@@ -8,6 +8,7 @@ import { DepositComponent } from "./dashboard/deposit/deposit.component";
 import { PaymentComponent } from "./dashboard/payment/payment.component";
 import { ProfileComponent } from "./dashboard/profile/profile.component";
 import { TransferComponent } from "./dashboard/transfer/transfer.component";
+import { CreditCardComponent } from "./dashboard/credit-card/credit-card.component";
 
 const routes: Routes = [
 	{
@@ -43,6 +44,10 @@ const routes: Routes = [
 			{
 				path: "transfer",
 				component: TransferComponent
+			},
+			{
+				path: "credit-card",
+				component: CreditCardComponent
 			}
 		]
 	}
