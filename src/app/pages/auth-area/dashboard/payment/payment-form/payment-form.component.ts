@@ -69,9 +69,6 @@ export class PaymentFormComponent {
 		this.hasError = false;
 		this.isLoading = true;
 		const usuario = this.authService.getUser();
-		console.log("dados antes " + this.dados.contaId);
-		console.log("conta " + usuario.contas[this.dados.contaId]);
-		console.log("dados depois " + this.dados.contaId);
 		this.dados.contaId = usuario.contas[this.dados.contaId];
 
 

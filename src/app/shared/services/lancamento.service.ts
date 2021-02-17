@@ -18,7 +18,7 @@ export class LancamentoService {
 			authorization: `Bearer ${this.authService.getToken()}`
 		});
 		return this.http.get(
-			`${environment.API_URL}lancamento`,
+			`${environment.API_URL}lancamento/usuario/${this.authService.getUser().id}`,
 			{ headers }
 		);
 	}

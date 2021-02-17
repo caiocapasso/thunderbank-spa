@@ -8,21 +8,24 @@ import { PlanoContaService } from '../../services/plano-conta.service';
 })
 export class SelectAccountPlanComponent implements OnInit {
 
-  @Output() plano = new EventEmitter<any>();
+  @Input() plano: any;
+  @Output() planoChange = new EventEmitter<any>();
   planosConta: any;
 
-  @Input() tipo = 0;
+  @Input() tipo: any;
 
   constructor(private planoContaService: PlanoContaService) { }
 
   ngOnInit(): void {
-    this.planoContaService.obterPlanos(this.tipo).subscribe(response => {
-      this.planosConta = response;
-    })
+    this.planoContaService
+      .obterPlanos(this.tipo).subscribe(response => {
+        this.planosConta = response;
+      })
   }
 
   pegarValor(event: any) {
-    this.plano.emit(event.value);
+    this.plano = event.value;
+    this.planoChange.emit(event.value);
   }
 
 }
