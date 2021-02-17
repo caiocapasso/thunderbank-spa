@@ -18,7 +18,8 @@ const routes: Routes = [
 	},
 	{
 		path: "home",
-		component: HomeComponent
+		component: HomeComponent,
+		canActivate: [UnloggedUserGuard]
 	},
 	{
 		path: "register",

@@ -12,6 +12,10 @@ const routes: Routes = [
 	{
 		path: "",
 		redirectTo: "dashboard",
+		pathMatch: "full"
+	},
+	{
+		path: "",
 		component: AuthAreaComponent,
 		children: [
 			{
@@ -37,11 +41,6 @@ const routes: Routes = [
 			{
 				path: "dashboard/transfer",
 				component: TransferComponent
-			},
-			{
-				path: "",
-				redirectTo: "dashboard",
-				pathMatch: "full"
 			}
 		]
 	}

@@ -16,9 +16,8 @@ import { TransferFormComponent } from "./dashboard/transfer/transfer-form/transf
 import { TransferComponent } from "./dashboard/transfer/transfer.component";
 import { CreateComponent } from "./dashboard/account-plan/create/create.component";
 import { HttpClientModule } from "@angular/common/http";
-import { BrowserModule } from "@angular/platform-browser";
 import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
-import { AppRoutingModule } from "src/app/app-routing.module";
+import { AuthAreaRoutingModule } from "./auth-area-routing.module";
 
 @NgModule({
 	declarations: [
@@ -37,6 +36,7 @@ import { AppRoutingModule } from "src/app/app-routing.module";
 	],
 	imports: [
 		CommonModule,
+		AuthAreaRoutingModule,
 		FontAwesomeModule,
 		FormsModule,
 		HttpClientModule,
