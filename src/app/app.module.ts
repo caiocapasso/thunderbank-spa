@@ -16,7 +16,6 @@ import { Error404Component } from "./pages/error404/error404.component";
 import { HomeComponent } from "./pages/home/home.component";
 import { FooterComponent } from "./shared/components/footer/footer.component";
 import { HeaderComponent } from "./shared/components/header/header.component";
-import { LoginComponent } from "./pages/login/login.component";
 import { RegisterComponent } from "./pages/register/register.component";
 import { LoginFormComponent } from "./shared/components/login-form/login-form.component";
 import { ProfileComponent } from "./pages/auth-area/dashboard/profile/profile.component";
@@ -33,8 +32,8 @@ import { ProfileFormComponent } from "./pages/auth-area/dashboard/profile/profil
 import { TransferFormComponent } from "./pages/auth-area/dashboard/transfer/transfer-form/transfer-form.component";
 import { TransferComponent } from "./pages/auth-area/dashboard/transfer/transfer.component";
 import { DepositComponent } from "./pages/auth-area/dashboard/deposit/deposit.component";
-import { SelectAccountPlanComponent } from './shared/components/select-account-plan/select-account-plan.component';
-import { SidebarComponent } from './shared/components/sidebar/sidebar.component';
+import { SelectAccountPlanComponent } from "./shared/components/select-account-plan/select-account-plan.component";
+import { SidebarComponent } from "./shared/components/sidebar/sidebar.component";
 
 registerLocaleData(localePT, "pt");
 
@@ -44,15 +43,14 @@ registerLocaleData(localePT, "pt");
 		HeaderComponent,
 		HomeComponent,
 		FooterComponent,
-		LoginComponent,
 		RegisterComponent,
 		DashboardComponent,
 		Error404Component,
 		AuthAreaComponent,
 		PaymentComponent,
+		LoginFormComponent,
 		RegisterFormComponent,
 		AccountPlanComponent,
-		LoginFormComponent,
 		ProfileComponent,
 		SpinningLoaderComponent,
 		RecoverComponent,

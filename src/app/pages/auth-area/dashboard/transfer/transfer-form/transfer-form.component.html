@@ -1,37 +1,53 @@
-<form id="transferencia-form">
-	<div class="col m-3">
+<form
+	id="transferencia-form"
+	id="login-form"
+	class="card m-3 form-control text-dark"
+	#form="ngForm"
+	(submit)="onSubmit(form)"
+>
+	<div class="col form-group m-3">
 		<input
+			id="contaInput"
 			type="number"
-			name="conta"
-			class="form-control"
+			[class.is-invalid]="validateInput('contaId', form)"
 			placeholder="Conta"
-			id="inputConta"
+			[(ngModel)]="dados.contaId"
+			name="contaId"
+			required
+			#contaIdInput
 		/>
 	</div>
-	<div class="col m-3">
+	<div class="col form-group m-3">
 		<input
+			id="valorInput"
 			type="number"
-			name="valor"
-			class="form-control"
+			[class.is-invalid]="validateInput('valor', form)"
 			placeholder="Valor"
-			id="inputValor"
+			[(ngModel)]="dados.valor"
+			name="valor"
+			required
+			#valorInput
 		/>
 	</div>
-	<div class="col m-3">
+	<div class="col form-group m-3">
 		<input
+			id="descricaoInput"
 			type="text"
-			name="name"
-			class="form-control"
+			[class.is-invalid]="validateInput('descricao', form)"
 			placeholder="Descrição"
-			id="inputDescricao"
+			[(ngModel)]="dados.descricao"
+			name="descricao"
+			required
+			#descricaoInput
 		/>
 	</div>
-	<div class="col m-3">
+	<div class="col form-group m-3">
+    <!-- TODO: como eu pego o valor desse componente e salvo em uma variavel aqui? Como eu valido? -->
 		<app-select-account-plan></app-select-account-plan>
 	</div>
 	<div class="col m-3 text-center">
 		<button type="submit" class="btn btn-labeled btn-success m-2 p-2">
-			Transferir
+			Depositar
 		</button>
 	</div>
 </form>

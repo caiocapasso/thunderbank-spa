@@ -37,8 +37,6 @@ export class DepositFormComponent {
 	) {}
 
 	onSubmit(form: NgForm): void {
-		console.log("form was submmited", form);
-
 		if (!form.valid) {
 			Object.keys(form.controls).forEach((key) => {
 				form.controls[key].markAsTouched();
@@ -72,7 +70,7 @@ export class DepositFormComponent {
 		this.isLoading = true;
 
 		this.lancamentoService
-			.realizarDeposito(this.dados)
+			.realizarLancamento(this.dados)
 			.pipe(
 				take(1),
 				finalize(() => (this.isLoading = false))
