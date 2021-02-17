@@ -18,6 +18,7 @@
 				name="cpf"
 				required
 				#cpfInput
+        mask="CPF_CNPJ"
 			/>
 			<div *ngIf="validateInput('cpf', form)" class="invalid-feedback">
 				CPF Inválido
@@ -35,6 +36,7 @@
 				name="tel"
 				required
 				#telInput
+        mask="(00) 0000-00000"
 			/>
 			<div *ngIf="validateInput('tel', form)" class="invalid-feedback">
 				Telefone Inválido
