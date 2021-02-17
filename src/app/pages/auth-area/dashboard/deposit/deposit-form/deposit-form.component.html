@@ -7,7 +7,7 @@
         <input id="descricaoInput" type="text" [class.is-invalid]="validateInput('descricao', form)" placeholder="Descrição" [(ngModel)]="dados.descricao" name="descricao" required #descricaoInput class="form-control" />
     </div>
     <div class="col form-group m-3">
-        <app-select-account-plan [(plano)]="dados.contaPlanoId" [tipo]="1"></app-select-account-plan>
+        <app-select-account-plan [(plano)]="dados.planoContaId" [tipo]="1"></app-select-account-plan>
     </div>
     <div class="col m-3 text-center">
         <button type="submit" class="btn btn-labeled btn-success m-2 p-2">
