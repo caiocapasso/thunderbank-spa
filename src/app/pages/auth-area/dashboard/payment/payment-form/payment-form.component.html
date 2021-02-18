@@ -4,6 +4,12 @@
 	#form="ngForm"
 	(submit)="onSubmit(form)"
 >
+<div *ngIf="hasError && isDone" class="alert alert-danger" role="alert">
+	Ocorreu um problema. Tente novamente mais tarde.
+</div>
+<div *ngIf="!hasError && isDone" class="alert alert-success" role="alert">
+	Sucesso
+</div>
 	<div class="col form-group m-3">
 		<input
 			id="valorInput"
@@ -55,8 +61,17 @@
 		></app-select-account-plan>
 	</div>
 	<div class="col m-3 text-center">
-		<button type="submit" class="btn btn-labeled btn-success m-2 p-2">
-			Pagar
-		</button>
+		<div *ngIf="!isLoading">
+			<button
+				type="submit"
+				class="btn btn-labeled btn-success m-2 p-2"
+				[disabled]="dados?.valor === 0 || dados?.descricao?.length === 0 || dados?.planoContaId === 0"
+			>
+				Pagar
+			</button>
+		</div>
+		<div *ngIf="isLoading" class="mt-3">
+			<app-spinning-loader></app-spinning-loader>
+		</div>
 	</div>
 </form>

@@ -41,12 +41,14 @@
 				Senha inválida
 			</div>
 		</div>
-		<div *ngIf="!isLoading">
-			<button type="submit" class="btn btn-primary mt-3">Entrar</button>
-		</div>
-		<div *ngIf="isLoading" class="mt-3">
-			<app-spinning-loader></app-spinning-loader>
-		</div>
+    <div>
+      <div *ngIf="!isLoading">
+        <button type="submit" class="btn btn-primary mt-3">Entrar</button>
+      </div>
+      <div *ngIf="isLoading" class="mt-3">
+        <app-spinning-loader></app-spinning-loader>
+      </div>
+    </div>
 		<div class="mt-4">
 			<a routerLink="/recover">Recupere sua senha</a>
 			<br />

@@ -25,9 +25,11 @@ export class DepositFormComponent {
 		valor: 0
 	};
 
+	isDone = false;
 	isLoading = false;
 	hasError = false;
 
+	@ViewChild("form") formGroup: NgForm | undefined;
 	@ViewChild("valorInput") valorInput: ElementRef | undefined;
 	@ViewChild("descricaoInput") descricaoInput: ElementRef | undefined;
 	@ViewChild("planoContaInput") planoContaInput: ElementRef | undefined;
@@ -36,7 +38,7 @@ export class DepositFormComponent {
 		private lancamentoService: LancamentoService,
 		private router: Router,
 		private authService: AuthService
-	) { }
+	) {}
 
 	onSubmit(form: NgForm): void {
 		if (!form.valid) {
@@ -68,6 +70,7 @@ export class DepositFormComponent {
 
 	submit(): void {
 		this.hasError = false;
+		this.isDone = false;
 		this.isLoading = true;
 		this.dados.contaId = this.authService.getUser().contas[0];
 		this.lancamentoService
@@ -83,12 +86,18 @@ export class DepositFormComponent {
 	}
 
 	onSuccess(): void {
-		//alert de sucesso
-		void this.router.navigate(["dashboard"]);
+		this.showNotification();
+		this.formGroup?.form.reset();
 	}
 
 	onError(error: HttpErrorResponse): void {
+		this.showNotification();
 		this.hasError = true;
 		console.log("onError ->  ", error);
+	}
+
+	showNotification() {
+		this.isDone = true;
+		setTimeout(() => (this.isDone = false), 4000);
 	}
 }

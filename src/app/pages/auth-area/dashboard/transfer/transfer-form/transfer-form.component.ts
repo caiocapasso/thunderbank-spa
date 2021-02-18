@@ -23,9 +23,11 @@ export class TransferFormComponent {
 		valor: 0
 	};
 
+	isDone = false;
 	isLoading = false;
 	hasError = false;
 
+	@ViewChild("form") formGroup: NgForm | undefined;
 	@ViewChild("contaIdInput") contaIdInput: ElementRef | undefined;
 	@ViewChild("valorInput") valorInput: ElementRef | undefined;
 	@ViewChild("descricaoInput") descricaoInput: ElementRef | undefined;
@@ -34,7 +36,7 @@ export class TransferFormComponent {
 	constructor(
 		private lancamentoService: LancamentoService,
 		private router: Router
-	) { }
+	) {}
 
 	onSubmit(form: NgForm): void {
 		if (!form.valid) {
@@ -66,6 +68,7 @@ export class TransferFormComponent {
 	}
 
 	submit(): void {
+		this.isDone = false;
 		this.hasError = false;
 		this.isLoading = true;
 
@@ -82,16 +85,22 @@ export class TransferFormComponent {
 	}
 
 	onSuccess(): void {
-		//alert de sucesso
-		void this.router.navigate(["dashboard"]);
+		this.showNotification();
+		this.formGroup?.form.reset();
 	}
 
 	onError(error: HttpErrorResponse): void {
+		this.showNotification();
 		this.hasError = true;
 		console.log("onError ->  ", error);
 	}
+
+	showNotification() {
+		this.isDone = true;
+		setTimeout(() => (this.isDone = false), 4000);
+	}
+
 	pegarValorSelect(valor: any) {
 		this.dados.planoContaId = valor;
 	}
-
 }

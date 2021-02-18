@@ -24,9 +24,11 @@ export class PaymentFormComponent {
 		valor: 0
 	};
 
+	isDone = false;
 	isLoading = false;
 	hasError = false;
 
+	@ViewChild("form") formGroup: NgForm | undefined;
 	@ViewChild("valorInput") valorInput: ElementRef | undefined;
 	@ViewChild("descricaoInput") descricaoInput: ElementRef | undefined;
 	@ViewChild("planoContaInput") planoContaInput: ElementRef | undefined;
@@ -35,7 +37,7 @@ export class PaymentFormComponent {
 		private lancamentoService: LancamentoService,
 		private router: Router,
 		private authService: AuthService
-	) { }
+	) {}
 
 	onSubmit(form: NgForm): void {
 		if (!form.valid) {
@@ -66,11 +68,11 @@ export class PaymentFormComponent {
 	}
 
 	submit(): void {
+		this.isDone = false;
 		this.hasError = false;
 		this.isLoading = true;
 		const usuario = this.authService.getUser();
 		this.dados.contaId = usuario.contas[this.dados.contaId];
-
 
 		this.lancamentoService
 			.realizarLancamento(this.dados)
@@ -85,12 +87,19 @@ export class PaymentFormComponent {
 	}
 
 	onSuccess(): void {
-		void this.router.navigate(["dashboard"]);
+		this.showNotification();
+		this.formGroup?.form.reset();
 	}
 
 	onError(error: HttpErrorResponse): void {
+		this.showNotification();
 		this.hasError = true;
 		console.log("onError ->  ", error);
+	}
+
+	showNotification() {
+		this.isDone = true;
+		setTimeout(() => (this.isDone = false), 4000);
 	}
 
 	pegarValorSelect(valor: any) {
