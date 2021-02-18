@@ -1,6 +1,12 @@
 import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
-import { faWallet } from "@fortawesome/free-solid-svg-icons";
-import { PlanoContaService } from '../../../../shared/services/plano-conta.service';
+import { PlanoContaService } from "../../../../shared/services/plano-conta.service";
+import {
+	faPlus,
+	faMoneyCheckAlt,
+	faTrash,
+	faEdit
+} from "@fortawesome/free-solid-svg-icons";
+import { AccountPlan } from "src/app/shared/models/account-plan.model";
 
 @Component({
 	selector: "app-account-plan",
@@ -8,22 +14,32 @@ import { PlanoContaService } from '../../../../shared/services/plano-conta.servi
 	styleUrls: ["./account-plan.component.scss"]
 })
 export class AccountPlanComponent implements OnInit {
-	faWallet = faWallet;
+	faPlus = faPlus;
+	faMoneyCheckAlt = faMoneyCheckAlt;
+	faTrash = faTrash;
+	faEdit = faEdit;
 
 	@Input() plano: any;
 	@Output() planoChange = new EventEmitter<any>();
-	planosConta: any;
+	planosConta: AccountPlan[] | undefined;
 
 	constructor(private planoContaService: PlanoContaService) {}
 
 	ngOnInit(): void {
-		this.planoContaService.obterTodosPlanos().subscribe(response => {
-		  	this.planosConta = response;
-		})
+		this.planoContaService
+			.obterTodosPlanos()
+			.subscribe((response: AccountPlan[]) => {
+				this.planosConta = response;
+				console.log(this.planosConta);
+			});
 	}
 
-	pegarValor(event: any) {
+	pegarValor(event: any): void {
 		this.plano = event.value;
 		this.planoChange.emit(event.value);
+	}
+
+	deletarPlano(id: number) {
+		this.planoContaService.deletarPlano(id);
 	}
 }

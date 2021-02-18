@@ -2,12 +2,12 @@
     <div class="col-sm-12 col-md-6 mt-2">
         <div class="card card-pad-top">
             <div class="card-header">
-                <fa-icon [icon]="faCoins"></fa-icon> Conta - nº<span id="numero-conta"></span>
+                <fa-icon [icon]="faCoins"></fa-icon> Conta - nº<span>{{usuario}}</span>
             </div>
             <div class="card-body" style="min-height: 150px">
                 <h5 class="card-title">Saldo disponível</h5>
                 <p class="card-text" style="font-size: 30px">
-                    <strong data-saldo-disponivel>{{dashBoard?.saldo}}</strong>
+                    <span><strong>{{dashBoard?.saldo | currency}}</strong></span>
                 </p>
             </div>
         </div>
@@ -15,16 +15,16 @@
     <div class="col-sm-12 col-md-6 mt-2">
         <div class="card card-pad-top">
             <div class="card-header">
-                <fa-icon [icon]="faCreditCard"></fa-icon> Conta Crédito
+                <fa-icon [icon]="faCreditCard"></fa-icon> Conta Crédito - <span>{{usuario }}</span>
             </div>
             <div class="card-body" style="min-height: 150px">
                 <h5 class="card-title">Fatura atual</h5>
                 <p class="card-text" style="font-size: 30px">
-                    <strong data-fatura-atual></strong>
+                    <strong></strong>
                 </p>
                 <p class="card-text">
                     Limite disponível
-                    <strong data-limite-disponivel>{{dashBoard?.limite}}</strong
+                    <strong>{{dashBoard?.limite | currency}}</strong
 					>
 				</p>
 			</div>

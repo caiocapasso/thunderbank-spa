@@ -1,17 +1,49 @@
-<form id="deposito-form" id="login-form" #form="ngForm" (submit)="onSubmit(form)">
-    <div class="col form-group m-3">
-        <input id="valorInput" type="text" [class.is-invalid]="validateInput('valor', form)" placeholder="Valor" [(ngModel)]="dados.valor" name="valor" required #valorInput mask="separator.2" [thousandSeparator]="'.'" [decimalMarker]="','" [dropSpecialCharacters]="true"
-            prefix="R$ " />
-    </div>
-    <div class="col form-group m-3">
-        <input id="descricaoInput" type="text" [class.is-invalid]="validateInput('descricao', form)" placeholder="Descrição" [(ngModel)]="dados.descricao" name="descricao" required #descricaoInput class="form-control" />
-    </div>
-    <div class="col form-group m-3">
-        <app-select-account-plan [(plano)]="dados.planoContaId" [tipo]="1"></app-select-account-plan>
-    </div>
-    <div class="col m-3 text-center">
-        <button type="submit" class="btn btn-labeled btn-success m-2 p-2">
+<form
+	id="deposito-form"
+	id="login-form"
+	#form="ngForm"
+	(submit)="onSubmit(form)"
+>
+	<div class="col form-group m-3">
+		<input
+			id="valorInput"
+			type="text"
+      class="form-control"
+			[class.is-invalid]="validateInput('valor', form)"
+			placeholder="Valor"
+			[(ngModel)]="dados.valor"
+			name="valor"
+			required
+			#valorInput
+			mask="separator.2"
+			[thousandSeparator]="'.'"
+			[decimalMarker]="','"
+			[dropSpecialCharacters]="true"
+			prefix="R$ "
+		/>
+	</div>
+	<div class="col form-group m-3">
+		<input
+			id="descricaoInput"
+			type="text"
+			[class.is-invalid]="validateInput('descricao', form)"
+			placeholder="Descrição"
+			[(ngModel)]="dados.descricao"
+			name="descricao"
+			required
+			#descricaoInput
+			class="form-control"
+		/>
+	</div>
+	<div class="col form-group m-3">
+		<app-select-account-plan
+			[(plano)]="dados.planoContaId"
+			[tipo]="1"
+		></app-select-account-plan>
+	</div>
+	<div class="col m-3 text-center">
+		<button type="submit" class="btn btn-labeled btn-success m-2 p-2">
 			Depositar
 		</button>
-    </div>
+	</div>
 </form>

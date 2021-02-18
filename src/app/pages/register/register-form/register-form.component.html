@@ -1,5 +1,5 @@
 <form
-	id="login-form"
+	id="register-form"
 	class="card m-3 form-control text-dark"
 	#form="ngForm"
 	(submit)="onSubmit(form)"
@@ -10,7 +10,6 @@
 		<div class="form-group mt-3">
 			<input
 				type="text"
-				autocomplete="username"
 				class="form-control"
 				[class.is-invalid]="validateInput('cpf', form)"
 				placeholder="CPF"
@@ -18,7 +17,7 @@
 				name="cpf"
 				required
 				#cpfInput
-        		mask="CPF_CNPJ"
+        mask="CPF_CNPJ"
 				maxLength=14
 			/>
 			<div *ngIf="validateInput('cpf', form)" class="invalid-feedback">
@@ -29,7 +28,6 @@
 		<div class="form-group mt-3">
 			<input
 				type="text"
-				autocomplete="username"
 				class="form-control"
 				[class.is-invalid]="validateInput('tel', form)"
 				placeholder="Telefone (com DDD)"
@@ -37,7 +35,7 @@
 				name="tel"
 				required
 				#telInput
-        		mask="(00) 00000-0000"
+        mask="(00) 00000-0000"
 			/>
 			<div *ngIf="validateInput('tel', form)" class="invalid-feedback">
 				Telefone Inválido
@@ -47,7 +45,6 @@
 		<div class="form-group mt-3">
 			<input
 				type="text"
-				autocomplete="nome"
 				class="form-control"
 				[class.is-invalid]="validateInput('nome', form)"
 				placeholder="Nome"
@@ -64,7 +61,6 @@
 		<div class="form-group mt-3">
 			<input
 				type="text"
-				autocomplete="username"
 				class="form-control"
 				[class.is-invalid]="validateInput('login', form)"
 				placeholder="Login"
@@ -84,7 +80,6 @@
 		<div class="form-group mt-3">
 			<input
 				type="password"
-				autocomplete="current-password"
 				class="form-control"
 				[class.is-invalid]="validateInput('senha', form)"
 				placeholder="Senha"

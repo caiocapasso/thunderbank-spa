@@ -1,3 +1,5 @@
-export class AccountPlan {
-	constructor(public tipo: string, public descricao: string) {}
+export interface AccountPlan {
+	id?: number;
+	tipo: number;
+	descricao: string;
 }
