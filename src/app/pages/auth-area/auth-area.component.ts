@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 import { AuthService } from "src/app/shared/services/auth.service";
+import { faPooStorm } from "@fortawesome/free-solid-svg-icons";
 
 @Component({
 	selector: "app-auth-area",
@@ -8,6 +9,7 @@ import { AuthService } from "src/app/shared/services/auth.service";
 	styleUrls: ["./auth-area.component.scss"]
 })
 export class AuthAreaComponent implements OnInit {
+	faPooStorm = faPooStorm;
 	usuario = "";
 
 	constructor(private router: Router, private authService: AuthService) {}
