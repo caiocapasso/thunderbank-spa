@@ -28,12 +28,18 @@ const routes: Routes = [
 			},
 			{
 				path: "account-plan",
-				component: AccountPlanComponent
+				children: [
+					{
+						path: "",
+						component: AccountPlanComponent
+					},
+					{
+						path: "account-plan-form",
+						component: AccountPlanFormComponent
+					}
+				]
 			},
-			{
-				path: "account-plan-form",
-				component: AccountPlanFormComponent
-			},
+
 			{
 				path: "deposit",
 				component: DepositComponent
