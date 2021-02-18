@@ -1,4 +1,6 @@
-<select name="plano" id="inputPlanoDeConta" class="form-control" (change)="pegarValor($event.target)" placeholder="Plano de Contas" *ngFor="let plano of planosConta">
+<select name="plano" id="inputPlanoDeConta" class="form-control" (change)="pegarValor($event.target)" placeholder="Plano de Contas">
 	<option disabled selected value>Selecione Plano de Contas</option>
-	<option value="{{plano.id}}">{{plano.descricao}}</option>
+	<option *ngFor="let plano of planosConta" value="{{plano.id}}">
+		{{plano.descricao}}
+	</option>
 </select>

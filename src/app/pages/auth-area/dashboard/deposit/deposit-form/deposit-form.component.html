@@ -1,64 +1,28 @@
-<form
-	id="deposito-form"
-	id="login-form"
-	#form="ngForm"
-	(submit)="onSubmit(form)"
->
-	<div *ngIf="hasError && isDone" class="alert alert-danger" role="alert">
-		Ocorreu um problema. Tente novamente mais tarde.
-	</div>
-	<div *ngIf="!hasError && isDone" class="alert alert-success" role="alert">
-		Sucesso
-	</div>
-	<div class="col form-group m-3">
-		<input
-			id="valorInput"
-			type="text"
-			class="form-control"
-			[class.is-invalid]="validateInput('valor', form)"
-			placeholder="Valor"
-			[(ngModel)]="dados.valor"
-			name="valor"
-			required
-			#valorInput
-			mask="separator.2"
-			[thousandSeparator]="'.'"
-			[decimalMarker]="','"
-			[dropSpecialCharacters]="true"
-			prefix="R$ "
-		/>
-	</div>
-	<div class="col form-group m-3">
-		<input
-			id="descricaoInput"
-			type="text"
-			[class.is-invalid]="validateInput('descricao', form)"
-			placeholder="Descrição"
-			[(ngModel)]="dados.descricao"
-			name="descricao"
-			required
-			#descricaoInput
-			class="form-control"
-		/>
-	</div>
-	<div class="col form-group m-3">
-		<app-select-account-plan
-			[(plano)]="dados.planoContaId"
-			[tipo]="2"
-		></app-select-account-plan>
-	</div>
-	<div class="col m-3 text-center">
-		<div *ngIf="!isLoading">
-			<button
-				type="submit"
-				class="btn btn-labeled btn-success m-2 p-2"
-				[disabled]="dados?.valor === 0 || dados?.descricao?.length === 0 || dados?.planoContaId === 0"
-			>
+<form id="deposito-form" id="login-form" #form="ngForm" (submit)="onSubmit(form)">
+    <div *ngIf="hasError && isDone" class="alert alert-danger" role="alert">
+        Ocorreu um problema. Tente novamente mais tarde.
+    </div>
+    <div *ngIf="!hasError && isDone" class="alert alert-success" role="alert">
+        Sucesso
+    </div>
+    <div class="col form-group m-3">
+        <input id="valorInput" type="text" class="form-control" [class.is-invalid]="validateInput('valor', form)" placeholder="Valor" [(ngModel)]="dados.valor" name="valor" required #valorInput mask="separator.2" [thousandSeparator]="'.'" [decimalMarker]="','"
+            [dropSpecialCharacters]="true" prefix="R$ " />
+    </div>
+    <div class="col form-group m-3">
+        <input id="descricaoInput" type="text" [class.is-invalid]="validateInput('descricao', form)" placeholder="Descrição" [(ngModel)]="dados.descricao" name="descricao" required #descricaoInput class="form-control" />
+    </div>
+    <div class="col form-group m-3">
+        <app-select-account-plan [(plano)]="dados.planoContaId" [tipo]="1"></app-select-account-plan>
+    </div>
+    <div class="col m-3 text-center">
+        <div *ngIf="!isLoading">
+            <button type="submit" class="btn btn-labeled btn-success m-2 p-2" [disabled]="dados?.valor === 0 || dados?.descricao?.length === 0 || dados?.planoContaId === 0">
 				Depositar
 			</button>
-		</div>
-		<div *ngIf="isLoading" class="mt-3">
-			<app-spinning-loader></app-spinning-loader>
-		</div>
-	</div>
+        </div>
+        <div *ngIf="isLoading" class="mt-3">
+            <app-spinning-loader></app-spinning-loader>
+        </div>
+    </div>
 </form>
