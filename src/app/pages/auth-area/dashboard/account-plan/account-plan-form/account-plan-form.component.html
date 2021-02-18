@@ -1,22 +1,32 @@
 <div class="card">
-    <div class="card-header">Novo plano de contas</div>
-    <div class="card-body">
-        <form action="" method="POST">
-            <div class="row row-pad">
-                <div class="col-sm-12 col-md-3">
-                    <label for="tipo" class="label-white">Tipo</label>
-                    <select name="tipo" id="tipo" class="form-control">
+	<div class="card-header">
+		Novo plano de contas
+	</div>
+	<div class="card-body">
+		<form action="" method="POST">
+			<div class="row row-pad">
+				<div class="col-sm-12 col-md-3">
+					<label for="tipo" class="label-white">Tipo</label>
+					<select name="tipo" id="tipo" class="form-control">
 						<option value="DESPESA">Despesa</option>
 						<option value="RECEITA">Receita</option>
 					</select>
-                </div>
-                <div class="col-sm-12 col-md-9">
-                    <label for="descricao" class="label-white">Descrição</label>
-                    <input id="descricao" name="descricao" type="text" class="form-control" />
-                </div>
-            </div>
-            <div class="row-pad">
-                <button type="submit" class="btn btn-warning btn-action actions-button">
+				</div>
+				<div class="col-sm-12 col-md-9">
+					<label for="descricao" class="label-white">Descrição</label>
+					<input
+						id="descricao"
+						name="descricao"
+						type="text"
+						class="form-control"
+					/>
+				</div>
+			</div>
+			<div class="row-pad">
+				<button
+					type="submit"
+					class="btn btn-labeled btn-success m-2 p-2"
+				>
 					<svg
 						xmlns="http://www.w3.org/2000/svg"
 						width="16"
@@ -34,17 +44,25 @@
 					</svg>
 					Salvar
 				</button>
-                <a routerLink="/dashboard/account-plan" class="btn btn-warning btn-action actions-button">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle" viewBox="0 0 16 16">
+				<a routerLink="/dashboard/account-plan" class="btn btn-danger m-2 p-2">
+					<svg
+						xmlns="http://www.w3.org/2000/svg"
+						width="16"
+						height="16"
+						fill="currentColor"
+						class="bi bi-x-circle"
+						viewBox="0 0 16 16"
+					>
 						<path
 							d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"
 						/>
 						<path
 							d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"
 						/>
-					</svg> Cancelar
-                </a>
-            </div>
-        </form>
-    </div>
+					</svg>
+					Cancelar
+				</a>
+			</div>
+		</form>
+	</div>
 </div>
