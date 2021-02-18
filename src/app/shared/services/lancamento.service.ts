@@ -13,26 +13,15 @@ export class LancamentoService {
 
 	obterLancamentos(): Observable<any> {
 
-		const headers = new HttpHeaders({
-			"Content-Type": "application/json",
-			authorization: `Bearer ${this.authService.getToken()}`
-		});
 		return this.http.get(
 			`${environment.API_URL}lancamento/usuario/${this.authService.getUser().id}`,
-			{ headers }
 		);
 	}
 
 	realizarLancamento(lancamento: Lancamento): Observable<any> {
-		const headers = new HttpHeaders({
-			"Content-Type": "application/json",
-			authorization: `Bearer ${this.authService.getToken()}`
-		});
-
 		return this.http.post(
 			`${environment.API_URL}lancamento/`,
 			lancamento,
-			{ headers }
 		);
 	}
 }

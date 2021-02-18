@@ -35,10 +35,8 @@ const formatarDinheiro = (valor: number) => {
 
 const formatarData = (valor: string): string => {
 	const tempDate = new Date(valor);
-	console.log(tempDate);
 	const bla = `${tempDate.getDate()}/${tempDate.getMonth() + 1
 		}/${tempDate.getFullYear()}`;
-	console.log(bla);
 	return bla;
 };
 
@@ -47,13 +45,11 @@ export const token = (): string | null => {
 };
 
 const sair = (): void => {
-	console.log("saiu");
 	window.localStorage.removeItem("token");
 	window.location.replace("/");
 };
 
 const isLogado = (): boolean => {
-	console.log("isLogado = ", window.localStorage.getItem("token"));
 	return !!window.localStorage.getItem("token");
 };
 

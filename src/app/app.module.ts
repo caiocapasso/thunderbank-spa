@@ -12,6 +12,7 @@ import { HomeModule } from "./pages/home/home.module";
 import { RegisterModule } from "./pages/register/register.module";
 import { RecoverModule } from "./pages/recover/recover.module";
 import { Error404Module } from "./pages/error404/error404.module";
+import { authInterceptorProviders } from "./helper/auth.interceptor";
 
 registerLocaleData(localePT, "pt");
 @NgModule({
@@ -37,8 +38,8 @@ registerLocaleData(localePT, "pt");
 		{
 			provide: DEFAULT_CURRENCY_CODE,
 			useValue: "BRL"
-		}
+		}, authInterceptorProviders
 	],
 	bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }

@@ -1,5 +1,6 @@
 import { Injectable, OnInit } from "@angular/core";
 import { Usuario } from "../models/usuario.model";
+import { tokenService } from "../utils/localStorage";
 
 @Injectable({
 	providedIn: "root"
@@ -51,6 +52,14 @@ export class AuthService implements OnInit {
 
 	isLogged(): boolean {
 		return !!(this.getUser() && this.getToken());
+	}
+
+	isValidToken(): boolean {
+		if (!this.getToken()) {
+			return false;
+		}
+		let tokenInfo = tokenService.parseJwt(this.getToken() as string)
+		return new Date() > new Date(tokenInfo.exp);
 	}
 
 	logout(): void {

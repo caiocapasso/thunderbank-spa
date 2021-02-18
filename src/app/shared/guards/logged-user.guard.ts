@@ -9,7 +9,7 @@ export class LoggedUserGuard implements CanActivate {
 	constructor(private router: Router, private authService: AuthService) { }
 
 	canActivate(): boolean {
-		if (this.authService.isLogged()) {
+		if (this.authService.isLogged() && this.authService.isValidToken()) {
 			return true;
 		}
 

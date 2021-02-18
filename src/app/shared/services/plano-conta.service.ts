@@ -9,52 +9,22 @@ import { AuthService } from "./auth.service";
 	providedIn: "root"
 })
 export class PlanoContaService {
-	constructor(private http: HttpClient, private authService: AuthService) {}
+	constructor(private http: HttpClient, private authService: AuthService) { }
 
 	obterTodosPlanos(): Observable<AccountPlan[]> {
-		const headers = new HttpHeaders({
-			"Content-Type": "application/json",
-			authorization: `Bearer ${this.authService.getToken()}`
-		});
-		return this.http.get<AccountPlan[]>(
-			`${environment.API_URL}plano-conta/`,
-			{
-				headers: headers
-			}
-		);
+		return this.http.get<AccountPlan[]>(`${environment.API_URL}plano-conta/`);
 	}
 
 	//tipo: 1=Receita; 2=Despesas
 	obterPlanos(tipo: number): Observable<any> {
-		const headers = new HttpHeaders({
-			"Content-Type": "application/json",
-			authorization: `Bearer ${this.authService.getToken()}`
-		});
-		return this.http.get(`${environment.API_URL}plano-conta/tipo/${tipo}`, {
-			headers: headers
-		});
+		return this.http.get(`${environment.API_URL}plano-conta/tipo/${tipo}`);
 	}
 
 	deletarPlano(id: number): Observable<any> {
-		console.log("deleta plano = ", id);
-		const headers = new HttpHeaders({
-			"Content-Type": "application/json",
-			authorization: `Bearer ${this.authService.getToken()}`
-		});
-		return this.http.delete(`${environment.API_URL}plano-conta/${id}`, {
-			headers: headers
-		});
+		return this.http.delete(`${environment.API_URL}plano-conta/${id}`);
 	}
 
 	criarPlano(dados: AccountPlan): Observable<any> {
-		console.log("criar plano = ", dados);
-		const headers = new HttpHeaders({
-			"Content-Type": "application/json",
-			authorization: `Bearer ${this.authService.getToken()}`
-		});
-
-		return this.http.post(`${environment.API_URL}plano-conta/`, dados, {
-			headers: headers
-		});
+		return this.http.post(`${environment.API_URL}plano-conta/`, dados);
 	}
 }
