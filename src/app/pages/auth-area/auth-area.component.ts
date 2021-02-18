@@ -12,14 +12,13 @@ export class AuthAreaComponent implements OnInit {
 	faPooStorm = faPooStorm;
 	usuario = "";
 
-	constructor(private router: Router, private authService: AuthService) {}
+	constructor(private router: Router, private authService: AuthService) { }
 
 	ngOnInit() {
 		this.usuario = this.authService.getUser().nome;
 	}
 
 	logout(): void {
-		console.log("user logged out");
 		this.authService.logout();
 		void this.router.navigate(["home"]);
 	}

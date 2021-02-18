@@ -23,14 +23,13 @@ export class AccountPlanComponent implements OnInit {
 	@Output() planoChange = new EventEmitter<any>();
 	planosConta: AccountPlan[] | undefined;
 
-	constructor(private planoContaService: PlanoContaService) {}
+	constructor(private planoContaService: PlanoContaService) { }
 
 	ngOnInit(): void {
 		this.planoContaService
 			.obterTodosPlanos()
 			.subscribe((response: AccountPlan[]) => {
 				this.planosConta = response;
-				console.log(this.planosConta);
 			});
 	}
 

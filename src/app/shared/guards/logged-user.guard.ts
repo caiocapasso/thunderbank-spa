@@ -6,15 +6,15 @@ import { AuthService } from "../services/auth.service";
 	providedIn: "root"
 })
 export class LoggedUserGuard implements CanActivate {
-	constructor(private router: Router, private authService: AuthService) {
 
-	}
+	constructor(private router: Router, private authService: AuthService) { }
 
 	canActivate(): boolean {
-		if (this.authService.isLogged() && this.authService.isValidToken()) {
+
+		if (this.authService.isValidToken() && this.authService.isLogged()) {
 			return true;
 		}
-		this.authService.setToken('');
+		this.authService.logout()
 		this.router.navigate(["login"]);
 		return false;
 	}

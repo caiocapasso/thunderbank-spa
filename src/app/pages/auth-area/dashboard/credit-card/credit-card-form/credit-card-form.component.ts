@@ -67,7 +67,7 @@ export class CreditCardFormComponent {
 	submit(): void {
 		this.hasError = false;
 		this.isLoading = true;
-		this.dados.contaId = this.authService.getUser().contas[0];
+		this.dados.contaId = this.authService.getUser().contas[1];
 		this.lancamentoService
 			.realizarLancamento(this.dados)
 			.pipe(

@@ -40,7 +40,7 @@ export class AuthService implements OnInit {
 		return this.token;
 	}
 
-	setUser(usuario: Usuario): void {
+	setUser(usuario: Usuario | null): void {
 		this.usuario = usuario;
 		localStorage.setItem("usuario", JSON.stringify(usuario));
 	}
@@ -59,7 +59,7 @@ export class AuthService implements OnInit {
 			return false;
 		}
 		let tokenInfo = tokenService.parseJwt(this.getToken() as string)
-		return new Date() < new Date(tokenInfo.exp);
+		return new Date() < new Date(tokenInfo.exp * 1000);
 	}
 
 	logout(): void {

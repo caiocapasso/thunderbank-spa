@@ -12,7 +12,6 @@ export class UnloggedUserGuard implements CanActivate {
 		if (!this.authService.isLogged()) {
 			return true;
 		}
-
 		this.router.navigate(["dashboard"]);
 		return false;
 	}
