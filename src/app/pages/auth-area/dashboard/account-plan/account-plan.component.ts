@@ -1,5 +1,6 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
 import { faWallet } from "@fortawesome/free-solid-svg-icons";
+import { PlanoContaService } from '../../../../shared/services/plano-conta.service';
 
 @Component({
 	selector: "app-account-plan",
@@ -8,7 +9,21 @@ import { faWallet } from "@fortawesome/free-solid-svg-icons";
 })
 export class AccountPlanComponent implements OnInit {
 	faWallet = faWallet;
-	constructor() {}
 
-	ngOnInit(): void {}
+	@Input() plano: any;
+	@Output() planoChange = new EventEmitter<any>();
+	planosConta: any;
+
+	constructor(private planoContaService: PlanoContaService) {}
+
+	ngOnInit(): void {
+		this.planoContaService.obterTodosPlanos().subscribe(response => {
+		  	this.planosConta = response;
+		})
+	}
+
+	pegarValor(event: any) {
+		this.plano = event.value;
+		this.planoChange.emit(event.value);
+	}
 }

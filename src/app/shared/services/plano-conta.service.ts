@@ -11,6 +11,11 @@ export class PlanoContaService {
 	constructor(private http: HttpClient, private authService: AuthService) {
 	}
 
+	obterTodosPlanos(): Observable<any> {
+		const headers = new HttpHeaders({ "Content-Type": "application/json", "authorization": "Bearer " + this.authService.getToken() });
+		return this.http.get(`${environment.API_URL}plano-conta/`, { headers: headers });		
+	}
+
 	obterPlanos(tipo: number): Observable<any> {
 		//tipo: 1=Receita; 2=Despesas
 		const headers = new HttpHeaders({ "Content-Type": "application/json", "authorization": "Bearer " + this.authService.getToken() });
