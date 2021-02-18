@@ -6,6 +6,7 @@ import { NgForm } from "@angular/forms";
 import { Router } from "@angular/router";
 import { finalize, take } from "rxjs/operators";
 import { Lancamento } from "src/app/shared/models/lancamento.model";
+import { AuthService } from "src/app/shared/services/auth.service";
 import { LancamentoService } from "src/app/shared/services/lancamento.service";
 @Component({
 	selector: "app-transfer-form",
@@ -35,8 +36,9 @@ export class TransferFormComponent {
 
 	constructor(
 		private lancamentoService: LancamentoService,
-		private router: Router
-	) {}
+		private router: Router,
+		private authService: AuthService
+	) { }
 
 	onSubmit(form: NgForm): void {
 		if (!form.valid) {
@@ -71,7 +73,7 @@ export class TransferFormComponent {
 		this.isDone = false;
 		this.hasError = false;
 		this.isLoading = true;
-
+		this.dados.contaId = this.authService.getUser().contas[0];
 		this.lancamentoService
 			.realizarLancamento(this.dados)
 			.pipe(
