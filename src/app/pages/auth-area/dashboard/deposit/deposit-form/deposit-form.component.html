@@ -8,17 +8,18 @@
 		<input
 			id="valorInput"
 			type="text"
+      class="form-control"
 			[class.is-invalid]="validateInput('valor', form)"
 			placeholder="Valor"
 			[(ngModel)]="dados.valor"
 			name="valor"
 			required
 			#valorInput
-      mask="separator.2"
-      [thousandSeparator]="'.'"
-      [decimalMarker]="','"
-      [dropSpecialCharacters]="true"
-      prefix="R$ "
+			mask="separator.2"
+			[thousandSeparator]="'.'"
+			[decimalMarker]="','"
+			[dropSpecialCharacters]="true"
+			prefix="R$ "
 		/>
 	</div>
 	<div class="col form-group m-3">
@@ -31,12 +32,12 @@
 			name="descricao"
 			required
 			#descricaoInput
+			class="form-control"
 		/>
 	</div>
 	<div class="col form-group m-3">
-		<!-- TODO: como eu pego o valor desse componente e salvo em uma variavel aqui? Como eu valido? -->
 		<app-select-account-plan
-			(plano)="pegarValorSelect($event)"
+			[(plano)]="dados.planoContaId"
 			[tipo]="1"
 		></app-select-account-plan>
 	</div>

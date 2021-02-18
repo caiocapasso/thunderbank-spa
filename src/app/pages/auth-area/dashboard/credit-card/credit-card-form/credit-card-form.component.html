@@ -7,13 +7,19 @@
 	<div class="col form-group m-3">
 		<input
 			id="valorInput"
-			type="number"
+			type="text"
+      class="form-control"
 			[class.is-invalid]="validateInput('valor', form)"
 			placeholder="Valor"
 			[(ngModel)]="dados.valor"
 			name="valor"
 			required
 			#valorInput
+			mask="separator.2"
+			[thousandSeparator]="'.'"
+			[decimalMarker]="','"
+			[dropSpecialCharacters]="true"
+			prefix="R$ "
 		/>
 	</div>
 	<div class="col form-group m-3">
@@ -29,7 +35,10 @@
 		/>
 	</div>
 	<div class="col form-group m-3">
-		<app-select-account-plan (plano)="pegarValorSelect($event)" [tipo]=2></app-select-account-plan>
+		<app-select-account-plan
+			(plano)="pegarValorSelect($event)"
+			[tipo]="2"
+		></app-select-account-plan>
 	</div>
 	<div class="col m-3 text-center">
 		<button type="submit" class="btn btn-labeled btn-success m-2 p-2">

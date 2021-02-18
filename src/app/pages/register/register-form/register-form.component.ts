@@ -55,7 +55,7 @@ export class RegisterFormComponent {
 			}
 		}
 
-		this.userRegister();
+		this.submit();
 	}
 
 	validateInput(inputName: string, form: NgForm): boolean {
@@ -68,7 +68,7 @@ export class RegisterFormComponent {
 		);
 	}
 
-	userRegister(): void {
+	submit(): void {
 		this.hasError = false;
 		this.isLoading = true;
 

@@ -1,0 +1,54 @@
+<div class="card">
+	<div class="card-header">Cadastrar novo plano de contas</div>
+	<div class="card-body">
+		<form
+			id="account-plan-form"
+			class="m-3"
+			#form="ngForm"
+			(submit)="onSubmit(form)"
+		>
+			<div class="row row-pad">
+				<div class="col form-group m-3">
+					<select name="tipo" id="tipo" class="form-control" [(ngModel)]="dados.tipo" required [class.is-invalid]="validateInput('tipo', form)">
+						<option value="0" disabled selected>Selecione Tipo</option>
+						<option value="1">Despesa</option>
+						<option value="2">Receita</option>
+					</select>
+				</div>
+				<div class="col form-group m-3">
+					<input
+            id="descricao"
+            type="text"
+            class="form-control"
+            [class.is-invalid]="validateInput('descricao', form)"
+            placeholder="Descrição"
+            [(ngModel)]="dados.descricao"
+            name="descricao"
+            required
+					/>
+          <div *ngIf="validateInput('descricao', form)" class="invalid-feedback">
+            Descrição inválida
+          </div>
+				</div>
+			</div>
+			<div class="row-pad">
+				<button
+					type="submit"
+          [disabled]="!(dados.tipo > 0 && dados.descricao.length > 0)"
+					class="btn btn-labeled btn-success m-2 p-2"
+				>
+					<fa-icon [icon]="faCheckCircle"></fa-icon>
+					Salvar
+				</button>
+        <button
+        type="submit"
+        class="btn btn-labeled btn-danger m-2 p-2"
+        routerLink=".."
+      >
+        <fa-icon [icon]="faBan"></fa-icon>
+        Cancelar
+      </button>
+			</div>
+		</form>
+	</div>
+</div>

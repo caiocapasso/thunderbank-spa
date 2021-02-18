@@ -6,6 +6,7 @@ import { NgForm } from "@angular/forms";
 import { Router } from "@angular/router";
 import { finalize, take } from "rxjs/operators";
 import { Lancamento } from "src/app/shared/models/lancamento.model";
+import { AuthService } from "src/app/shared/services/auth.service";
 import { LancamentoService } from "src/app/shared/services/lancamento.service";
 
 @Component({
@@ -33,7 +34,8 @@ export class DepositFormComponent {
 
 	constructor(
 		private lancamentoService: LancamentoService,
-		private router: Router
+		private router: Router,
+		private authService: AuthService
 	) { }
 
 	onSubmit(form: NgForm): void {
@@ -51,7 +53,6 @@ export class DepositFormComponent {
 				break;
 			}
 		}
-		//this.pegarValorSelect(valor: any)
 		this.submit();
 	}
 
@@ -68,7 +69,7 @@ export class DepositFormComponent {
 	submit(): void {
 		this.hasError = false;
 		this.isLoading = true;
-
+		this.dados.contaId = this.authService.getUser().contas[0];
 		this.lancamentoService
 			.realizarLancamento(this.dados)
 			.pipe(
@@ -89,9 +90,5 @@ export class DepositFormComponent {
 	onError(error: HttpErrorResponse): void {
 		this.hasError = true;
 		console.log("onError ->  ", error);
-	}
-
-	pegarValorSelect(valor: any) {
-		this.dados.planoContaId = valor;
 	}
 }

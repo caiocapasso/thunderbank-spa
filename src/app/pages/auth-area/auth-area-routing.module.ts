@@ -2,6 +2,7 @@ import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
 import { AuthAreaComponent } from "./auth-area.component";
 import { AccountPlanComponent } from "./dashboard/account-plan/account-plan.component";
+import { AccountPlanFormComponent } from "./dashboard/account-plan/account-plan-form/account-plan-form.component"
 import { DashboardComponent } from "./dashboard/dashboard.component";
 import { DashBoardResolver } from "./dashboard/dashboard.resolver";
 import { DepositComponent } from "./dashboard/deposit/deposit.component";
@@ -27,8 +28,18 @@ const routes: Routes = [
 			},
 			{
 				path: "account-plan",
-				component: AccountPlanComponent
+				children: [
+					{
+						path: "",
+						component: AccountPlanComponent
+					},
+					{
+						path: "account-plan-form",
+						component: AccountPlanFormComponent
+					}
+				]
 			},
+
 			{
 				path: "deposit",
 				component: DepositComponent
