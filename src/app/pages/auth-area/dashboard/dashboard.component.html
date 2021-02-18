@@ -54,7 +54,7 @@
             <div class="card-body">
                 <ul *ngFor="let lancamento of lancamentos">
                     <li class="list-group-item">
-                        <div>
+                        <div [ngClass]="{'red':lancamento.lancamentoTipo=='DESPESA','green':lancamento.lancamentoTipo=='RECEITA'}">
                             <h3>{{lancamento.contaTipo}}</h3>
                             <h4>{{lancamento.valor | currency}}</h4>
                             <h6>{{lancamento.dataHora | date}}</h6>
