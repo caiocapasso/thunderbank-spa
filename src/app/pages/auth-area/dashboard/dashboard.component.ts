@@ -41,7 +41,7 @@ export class DashboardComponent implements OnInit {
 	ngOnInit(): void {
 		this.usuario = this.authService.getUser();
 		this.lancamentoService.obterLancamentos().subscribe((response) => {
-			response.slice(0, 5).forEach((e: any) => {
+			response.reverse().slice(0, 5).forEach((e: any) => {
 				const tipo = this.authService
 					.getUser()
 					?.contas.indexOf(e.contaId);
@@ -49,7 +49,7 @@ export class DashboardComponent implements OnInit {
 				this.lancamentos.push(e);
 			});
 		});
-		console.log(this.lancamentos);
+
 		this.dashBoard = this.activatedRoute.snapshot.data.dashBoard;
 	}
 }
