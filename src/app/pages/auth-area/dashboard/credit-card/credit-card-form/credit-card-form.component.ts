@@ -3,13 +3,14 @@ import { ElementRef } from "@angular/core";
 import { ViewChild } from "@angular/core";
 import { Component, OnInit } from "@angular/core";
 import { NgForm } from "@angular/forms";
-import { Router } from "@angular/router"; 
+import { Router } from "@angular/router";
 import { finalize, take } from "rxjs/operators";
 import { Lancamento } from "src/app/shared/models/lancamento.model";
+import { AuthService } from "src/app/shared/services/auth.service";
 import { LancamentoService } from "src/app/shared/services/lancamento.service";
 @Component({
 	selector: "app-credit-card-form",
-	templateUrl: "./credit-card-form.component.html", 
+	templateUrl: "./credit-card-form.component.html",
 	styleUrls: ["./credit-card-form.component.scss"]
 })
 export class CreditCardFormComponent {
@@ -18,7 +19,7 @@ export class CreditCardFormComponent {
 		contaId: 0,
 		dataHora: new Date(),
 		descricao: "",
-		lancamentoTipo: "",
+		lancamentoTipo: "RECEITA",
 		planoContaId: 0,
 		valor: 0
 	};
@@ -32,8 +33,8 @@ export class CreditCardFormComponent {
 
 	constructor(
 		private lancamentoService: LancamentoService,
-		private router: Router
-	) {}
+		private router: Router, private authService: AuthService
+	) { }
 
 	onSubmit(form: NgForm): void {
 		if (!form.valid) {
@@ -50,7 +51,6 @@ export class CreditCardFormComponent {
 				break;
 			}
 		}
-
 		this.submit();
 	}
 
@@ -67,7 +67,7 @@ export class CreditCardFormComponent {
 	submit(): void {
 		this.hasError = false;
 		this.isLoading = true;
-
+		this.dados.contaId = this.authService.getUser().contas[0];
 		this.lancamentoService
 			.realizarLancamento(this.dados)
 			.pipe(

@@ -59,7 +59,7 @@ export class AuthService implements OnInit {
 			return false;
 		}
 		let tokenInfo = tokenService.parseJwt(this.getToken() as string)
-		return new Date() > new Date(tokenInfo.exp);
+		return new Date() < new Date(tokenInfo.exp);
 	}
 
 	logout(): void {
