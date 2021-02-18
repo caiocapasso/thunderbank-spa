@@ -49,6 +49,7 @@ export class DashboardComponent implements OnInit {
 				this.lancamentos.push(e);
 			});
 		});
+		console.log(this.lancamentos);
 		this.dashBoard = this.activatedRoute.snapshot.data.dashBoard;
 	}
 }
