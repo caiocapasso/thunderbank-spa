@@ -1,71 +1,69 @@
 <div class="col">
-	<div class="row" style="min-height: 100px">
-		<h3 class="title-dashboard text-center align-self-center">
-			Olá
-			<span id="nome-usuario"><strong>{{usuario?.nome}}</strong></span
+    <div class="row" style="min-height: 100px">
+        <h3 class="title-dashboard text-center align-self-center">
+            Olá
+            <span id="nome-usuario"><strong>{{usuario?.nome}}</strong></span
 			>, seja bem-vindo!
 		</h3>
-  </div>
-		<div class="row row-pad">
-			<div class="col-sm-12 col-md-6 mt-2">
-				<div class="card card-pad-top">
-					<div class="card-header">
-						<fa-icon [icon]="faCoins"></fa-icon> Conta - nº<span
-							>{{usuario}}</span
-						>
-					</div>
-					<div class="card-body" style="min-height: 150px">
-						<h5 class="card-title">Saldo disponível</h5>
-						<p class="card-text" style="font-size: 30px">
-							<span
-								><strong
-									>{{dashBoard?.saldo | currency}}</strong
-								></span
-							>
-						</p>
-					</div>
-				</div>
-			</div>
-			<div class="col-sm-12 col-md-6 mt-2">
-				<div class="card card-pad-top">
-					<div class="card-header">
-						<fa-icon [icon]="faCreditCard"></fa-icon> Conta Crédito
-						-
-						<span>{{usuario }}</span>
-					</div>
-					<div class="card-body" style="min-height: 150px">
-						<h5 class="card-title">Fatura atual</h5>
-						<p class="card-text" style="font-size: 30px">
-							<strong></strong>
-						</p>
-						<p class="card-text">
-							Limite disponível
-							<strong>{{dashBoard?.limite | currency}}</strong>
-						</p>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="row row-pad">
-			<div class="col">
-				<div class="card">
-					<div class="card-header">
-						<fa-icon [icon]="faMoneyBill"></fa-icon> Últimos
-						lançamentos
-					</div>
-					<div class="card-body">
-						<ul *ngFor="let lancamento of lancamentos">
-							<li class="list-group-item">
-								<div>
-									<h3>{{lancamento.contaTipo}}</h3>
-									<h4>{{lancamento.valor}}</h4>
-									<h6>{{lancamento.dataHora}}</h6>
-									<h6>{{lancamento.descricao}}</h6>
-								</div>
-							</li>
-						</ul>
-					</div>
-				</div>
-			</div>
-		</div>
 	</div>
+	<div class="row row-pad">
+		<div class="col-sm-12 col-md-6 mt-2">
+			<div class="card card-pad-top">
+				<div class="card-header">
+					<fa-icon [icon]="faCoins"></fa-icon> Conta - nº<span
+						>{{usuario?.contaNumero}}</span
+					>
+				</div>
+				<div class="card-body" style="min-height: 150px">
+					<h5 class="card-title">Saldo disponível</h5>
+					<p class="card-text" style="font-size: 30px">
+						<span
+							><strong
+								>{{dashBoard?.saldo | currency}}</strong
+							></span
+						>
+					</p>
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-12 col-md-6 mt-2">
+			<div class="card card-pad-top">
+				<div class="card-header">
+					<fa-icon [icon]="faCreditCard"></fa-icon> Conta Crédito -
+					<span>{{usuario?.cartaoNumero }}</span>
+    </div>
+    <div class="card-body" style="min-height: 150px">
+        <h5 class="card-title">Fatura atual</h5>
+        <p class="card-text" style="font-size: 30px">
+            <strong></strong>
+        </p>
+        <p class="card-text">
+            Limite disponível
+            <strong>{{dashBoard?.limite | currency}}</strong>
+        </p>
+    </div>
+</div>
+</div>
+</div>
+<div class="row row-pad">
+    <div class="col">
+        <div class="card">
+            <div class="card-header">
+                <fa-icon [icon]="faMoneyBill"></fa-icon> Últimos lançamentos
+            </div>
+            <div class="card-body">
+                <ul *ngFor="let lancamento of lancamentos">
+                    <li class="list-group-item">
+                        <div>
+                            <h3>{{lancamento.contaTipo}}</h3>
+                            <h4>{{lancamento.valor | currency}}</h4>
+                            <h6>{{lancamento.dataHora | date}}</h6>
+                            <h6>{{lancamento.descricao}}</h6>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+</div>

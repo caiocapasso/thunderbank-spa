@@ -21,7 +21,8 @@ export class AccountPlanFormComponent {
 
 	dados: AccountPlan = {
 		tipo: 0,
-		descricao: ""
+		descricao: "",
+		usuarioId: 0
 	};
 
 	aceite = false;
@@ -32,13 +33,10 @@ export class AccountPlanFormComponent {
 	constructor(
 		private planoContaService: PlanoContaService,
 		private router: Router
-	) {}
+	) { }
 
 	onSubmit(form: NgForm): void {
-		console.log("form was submmited", form);
-
 		if (!form.valid) {
-			console.log("form is not valid");
 			Object.keys(form.controls).forEach((key) => {
 				form.controls[key].markAsTouched();
 			});
@@ -49,7 +47,6 @@ export class AccountPlanFormComponent {
 	}
 
 	validateInput(inputName: string, form: NgForm): boolean {
-		console.log("bla", inputName);
 		if (!form.controls[inputName]) {
 			return false;
 		}

@@ -36,10 +36,11 @@ export class DashboardComponent implements OnInit {
 		private activatedRoute: ActivatedRoute,
 		private authService: AuthService,
 		private lancamentoService: LancamentoService
-	) {}
+	) { }
 
 	ngOnInit(): void {
 		this.usuario = this.authService.getUser();
+		console.log(this.usuario);
 		this.lancamentoService.obterLancamentos().subscribe((response) => {
 			response.slice(0, 5).forEach((e: any) => {
 				const tipo = this.authService

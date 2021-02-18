@@ -12,7 +12,7 @@ export class PlanoContaService {
 	constructor(private http: HttpClient, private authService: AuthService) { }
 
 	obterTodosPlanos(): Observable<AccountPlan[]> {
-		return this.http.get<AccountPlan[]>(`${environment.API_URL}plano-conta/`);
+		return this.http.get<AccountPlan[]>(`${environment.API_URL}plano-conta`);
 	}
 
 	//tipo: 1=Receita; 2=Despesas
@@ -25,6 +25,7 @@ export class PlanoContaService {
 	}
 
 	criarPlano(dados: AccountPlan): Observable<any> {
-		return this.http.post(`${environment.API_URL}plano-conta/`, dados);
+		dados.usuarioId = this.authService.getUser().id;
+		return this.http.post(`${environment.API_URL}plano-conta`, dados);
 	}
 }
